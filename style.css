@@ -3,7 +3,7 @@
    Thème : Clair, blanc, accents bleu-indigo professionnel
    ═══════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
 /* ── Variables ── */
 :root {
@@ -19,7 +19,7 @@
   --text-sub:     #4a5272;
   --radius:       10px;
   --radius-lg:    18px;
-  --font-head:    'Syne', sans-serif;
+  --font-head:    'Inter', sans-serif;
   --font-mono:    'Space Mono', monospace;
   --nav-h:        64px;
   --shadow:       0 4px 24px rgba(59,91,219,0.08);
@@ -326,7 +326,7 @@ nav {
 
 .news-body { flex: 1; }
 .news-body h3 {
-  font-family: var(--font-head);
+  font-family: 'Inter', sans-serif;
   font-size: .98rem;
   font-weight: 700;
   color: var(--text);
