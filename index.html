@@ -4,7 +4,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CV · Nathan Poret</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    .rgpd-tag { position: relative; cursor: pointer; user-select: none; }
+    .rgpd-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: var(--surface, #1e1e2e);
+      border: 1px solid var(--accent, #7c6af7);
+      border-radius: 8px;
+      padding: .4rem 0;
+      z-index: 999;
+      min-width: 260px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.4);
+      white-space: nowrap;
+    }
+    .rgpd-dropdown.open { display: block; }
+    .rgpd-dropdown a {
+      display: block;
+      padding: .5rem 1rem;
+      font-size: .78rem;
+      color: var(--text, #cdd6f4);
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .rgpd-dropdown a:hover {
+      background: rgba(124,106,247,.18);
+      color: var(--accent, #7c6af7);
+    }
+  </style>
 </head>
 <body>
 
@@ -145,6 +175,7 @@
               <div class="comp-tags">
                 <span class="tag">SQL</span>
                 <span class="tag">C#</span>
+                <span class="tag">Python</span>
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
                 <span class="tag">PHP</span>
@@ -175,6 +206,8 @@
               <div class="comp-tags">
                 <span class="tag">VirtualBox</span>
                 <span class="tag">VMware</span>
+                <span class="tag">Kali Linux</span>
+                <span class="tag">Linux</span>
               </div>
             </div>
           </div>
@@ -188,6 +221,7 @@
               <div class="comp-tags">
                 <span class="tag">MS-DOS</span>
                 <span class="tag">PowerShell</span>
+                <span class="tag">Bash</span>
               </div>
             </div>
           </div>
@@ -203,13 +237,20 @@
                   <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
                   MOOC SecNumacadémie (ANSSI)
                 </a>
-                <span class="tag tag--muted tag--link-disabled" title="Attestation à venir">
-                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;opacity:.5;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                <a href="images/NPO_certifPix.jpg" target="_blank" rel="noopener" class="tag tag--accent tag--link">
+                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
                   Certification PIX
-                </span>
-                <span class="tag tag--muted tag--link-disabled" title="Attestation à venir">
-                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;opacity:.5;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                  Certification RGPD
+                </a>
+                <span class="tag tag--accent tag--link rgpd-tag" id="rgpdToggle" role="button" tabindex="0">
+                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                  Certification RGPD ▾
+                  <span class="rgpd-dropdown" id="rgpdDropdown">
+                    <a href="images/NPO_certifRGPDM1.pdf" target="_blank" rel="noopener">Module 1 — Notions clés</a>
+                    <a href="images/NPO_certifRGPDM2.pdf" target="_blank" rel="noopener">Module 2 — Protection des données</a>
+                    <a href="images/NPO_certifRGPDM3.pdf" target="_blank" rel="noopener">Module 3 — Responsabilités des acteurs</a>
+                    <a href="images/NPO_certifRGPDM4.pdf" target="_blank" rel="noopener">Module 4 — DPO &amp; conformité</a>
+                    <a href="images/NPO_certifRGPDM5.pdf" target="_blank" rel="noopener">Module 5 — Collectivités territoriales</a>
+                  </span>
                 </span>
               </div>
             </div>
@@ -227,6 +268,18 @@
   Portfolio de <a href="index.html">Nathan Poret</a> · BTS SIO SLAM · Session 2026 · Lycée La Châtaigneraie
 </footer>
 
-<script src="nav.js"></script>
+<script>
+  const rgpdToggle = document.getElementById('rgpdToggle');
+  const rgpdDropdown = document.getElementById('rgpdDropdown');
+  if (rgpdToggle && rgpdDropdown) {
+    rgpdToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      rgpdDropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => rgpdDropdown.classList.remove('open'));
+    rgpdDropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', e => e.stopPropagation()));
+  }
+</script>
+<script src="styles/nav.js"></script>
 </body>
 </html>
