@@ -53,24 +53,258 @@
   </div>
 
 
-  <!-- Réalisations en milieu professionnel -->
+  <!-- Réalisations professionnelles -->
   <section class="block">
-    <h2 class="block-title">Réalisations en milieu professionnel</h2>
+    <h2 class="block-title">Réalisations professionnelles</h2>
 
-    <div class="pro-section">
-      <div class="pro-label">1ʳᵉ année · Stage à venir</div>
-      <div class="pro-empty">
-        <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-        <p>À compléter après ton stage · 25/05 → 26/06</p>
-      </div>
-    </div>
+    <style>
+      .real-grid {
+        display: flex;
+        flex-direction: column;
+        gap: .75rem;
+      }
+      .real-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.2rem 1.4rem;
+        transition: border-color .25s, box-shadow .25s, transform .2s;
+      }
+      .real-card:not(.real-card--empty):hover {
+        border-color: rgba(61,92,65,.35);
+        box-shadow: var(--shadow-accent);
+        transform: translateY(-2px);
+      }
+      .real-card--empty {
+        border-style: dashed;
+        opacity: .6;
+      }
+      .real-card a.real-link {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        text-decoration: none;
+        color: inherit;
+      }
+      .real-num {
+        min-width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--accent-light);
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-size: .72rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .real-body { flex: 1; }
+      .real-title {
+        font-family: var(--font-head);
+        font-size: .97rem;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: .35rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+      }
+      .real-title svg {
+        width: 13px; height: 13px;
+        color: var(--accent);
+        opacity: .7;
+        flex-shrink: 0;
+      }
+      .real-comp-main {
+        font-size: .72rem;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: .45rem;
+      }
+      .real-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .3rem;
+      }
+      .real-tag {
+        font-size: .7rem;
+        font-family: var(--font-mono);
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text-sub);
+        padding: .15em .55em;
+        border-radius: 4px;
+      }
+      .real-tag--accent {
+        background: var(--accent-light);
+        border-color: rgba(61,92,65,.25);
+        color: var(--accent);
+      }
+      .real-empty-label {
+        font-size: .85rem;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+      }
+      .real-empty-label svg { width: 16px; height: 16px; opacity: .4; }
+    </style>
 
-    <div class="pro-section" style="margin-top:1.2rem">
-      <div class="pro-label">2ᵉ année · Stage à venir</div>
-      <div class="pro-empty">
-        <svg viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-        <p>À compléter lors de la 2ᵉ année</p>
+    <div class="real-grid">
+
+      <!-- 1 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_cybernews.pdf" target="_blank" rel="noopener">
+          <div class="real-num">01</div>
+          <div class="real-body">
+            <div class="real-title">
+              TP Cybernews · Dynamic
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Travailler en mode projet · Organiser son développement professionnel</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.3.3</span>
+              <span class="real-tag real-tag--accent">B1.4.2</span>
+              <span class="real-tag real-tag--accent">B1.6.1</span>
+              <span class="real-tag real-tag--accent">B1.6.2</span>
+            </div>
+          </div>
+        </a>
       </div>
+
+      <!-- 2 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_linkedin.pdf" target="_blank" rel="noopener">
+          <div class="real-num">02</div>
+          <div class="real-body">
+            <div class="real-title">
+              Réseaux sociaux
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Organiser son développement professionnel</div>
+            <div class="real-tags">
+              <a class="real-tag real-tag--accent" href="https://www.linkedin.com/in/nathan-poret-887243394" target="_blank" rel="noopener" style="text-decoration:none;">↗ B1.6.3 · LinkedIn</a>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 3 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_github.pdf" target="_blank" rel="noopener">
+          <div class="real-num">03</div>
+          <div class="real-body">
+            <div class="real-title">
+              Mise en ligne de site
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Mettre à disposition des utilisateurs un service informatique</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.5.2</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 4 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_html.pdf" target="_blank" rel="noopener">
+          <div class="real-num">04</div>
+          <div class="real-body">
+            <div class="real-title">
+              TP HTML
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Gérer le patrimoine informatique · Développer la présence en ligne</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.1.2</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 5 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_vm.pdf" target="_blank" rel="noopener">
+          <div class="real-num">05</div>
+          <div class="real-body">
+            <div class="real-title">
+              TP Serveurs VM · Windows Server · Ubuntu · Kali Linux
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Mettre à disposition des utilisateurs un service informatique</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.5.2</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 6 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_bdd.pdf" target="_blank" rel="noopener">
+          <div class="real-num">06</div>
+          <div class="real-body">
+            <div class="real-title">
+              Base de données · SQL · PHPmyadmin
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Gérer le patrimoine informatique · Mettre à disposition des utilisateurs un service informatique</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.1.1</span>
+              <span class="real-tag real-tag--accent">B1.5.2</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 7 -->
+      <div class="real-card">
+        <a class="real-link" href="PREUVE_rgpd.pdf" target="_blank" rel="noopener">
+          <div class="real-num">07</div>
+          <div class="real-body">
+            <div class="real-title">
+              Certification RGPD
+              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            </div>
+            <div class="real-comp-main">Gérer le patrimoine informatique · Organiser son développement professionnel</div>
+            <div class="real-tags">
+              <span class="real-tag real-tag--accent">B1.1.4</span>
+              <span class="real-tag real-tag--accent">B1.6.3</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 8 — vide -->
+      <div class="real-card real-card--empty">
+        <div class="real-empty-label">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          Réalisation 08 · À compléter
+        </div>
+      </div>
+
+      <!-- 9 — vide -->
+      <div class="real-card real-card--empty">
+        <div class="real-empty-label">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          Réalisation 09 · À compléter
+        </div>
+      </div>
+
+      <!-- 10 — vide -->
+      <div class="real-card real-card--empty">
+        <div class="real-empty-label">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2M12 2s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+          Réalisation 10 · À compléter
+        </div>
+      </div>
+
     </div>
   </section>
 
