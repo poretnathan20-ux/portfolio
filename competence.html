@@ -448,8 +448,18 @@ const COMPETENCES = {
           "Contrôle des droits d'accès à la base"
         ],
         preuve: "PREUVE_bdd.pdf",
-        image: "IMG_bdd.png",
-        imageCaption: "Capture du schéma de base de données sous PHPmyadmin"
+        images: [
+          {
+            src: "php3.jpg",
+            caption: "Schéma relationnel — base de données aquarium_virtuel",
+            explication: "Le schéma relationnel recense toutes les entités de la base : tables especes, categories, groupes_taxonomiques, types_nourriture, regime_alimentaire, actualites, ainsi que les vues. Chaque champ, type et clé primaire/étrangère est identifié, ce qui prouve la capacité à recenser et documenter les ressources numériques d'un système."
+          },
+          {
+            src: "php2.jpg",
+            caption: "Interface PHPmyadmin — liste des tables et métadonnées",
+            explication: "La vue PHPmyadmin liste les 9 tables avec leur type (InnoDB), leur interclassement, leur taille et le nombre de lignes. C'est un inventaire complet des ressources de la base, permettant d'en assurer la traçabilité et la gestion du patrimoine numérique."
+          }
+        ]
       }
     ]
   },
@@ -475,28 +485,6 @@ const COMPETENCES = {
       }
     ]
   },
-  "B1.1.4": {
-    code: "B1.1.4",
-    titre: "B1 — Gérer le patrimoine informatique",
-    domaine: "b1.1.4 ▸ Vérifier les conditions de la continuité d'un service informatique",
-    description: "Vérifier les conditions de la continuité d'un service informatique : s'assurer que les mécanismes de disponibilité, de redondance et de reprise sont en place pour garantir un fonctionnement sans interruption.",
-    realisations: [
-      {
-        num: "07",
-        titre: "Certification RGPD",
-        justification: "La certification RGPD m'a donné les bases théoriques et pratiques pour comprendre les niveaux d'habilitation dans le traitement des données personnelles : qui peut accéder à quoi, sous quelles conditions, et comment documenter ces droits.",
-        points: [
-          "Notions de consentement et de droits des personnes",
-          "Comprendre les rôles : responsable de traitement, sous-traitant, DPO",
-          "Registre des traitements et cartographie des accès",
-          "Obligations légales de sécurisation des données"
-        ],
-        preuve: "PREUVE_rgpd.pdf",
-        image: "IMG_rgpd.png",
-        imageCaption: "Attestation de certification RGPD obtenue"
-      }
-    ]
-  },
   "B1.3.3": {
     code: "B1.3.3",
     titre: "B1 — Traiter les demandes de services aux utilisateurs",
@@ -506,7 +494,7 @@ const COMPETENCES = {
       {
         num: "01",
         titre: "Site web en équipe · L'Aquarium Virtuel",
-        justification: "Dans ce projet, j'ai participé à l'évolution continue du site L'Aquarium Virtuel qui exploite une base de données d'espèces marines. La section 'Ce qui se passe en ce moment' illustre concrètement cette évolution : ajout de nouvelles fiches espèces (poisson-ange impérial, tetra cardinal), amélioration du système de navigation par catégories, intégration d'un partenariat scientifique et d'une fonctionnalité de concours photo pour les visiteurs.",
+        justification: "Dans ce projet, j'ai participé à l'évolution continue du site L'Aquarium Virtuel qui exploite une base de données d'espèces marines. La section 'Ce qui se passe en ce moment' illustre concrètement cette évolution : ajout de nouvelles fiches espèces (poisson-ange impérial, tétra cardinal), amélioration du système de navigation par catégories, intégration d'un partenariat scientifique et d'une fonctionnalité de concours photo pour les visiteurs.",
         points: [
           "Ajout de nouvelles fiches espèces dans la base de données",
           "Amélioration du menu de navigation (recherche par catégories)",
@@ -546,13 +534,13 @@ const COMPETENCES = {
           },
           {
             src: "charteGraphique2.jpg",
-            caption: "Charte graphique — Polices & couleurs",
-            explication: "La charte graphique définit les polices choisies (Jazz LET pour les titres, Pompilus Nautilius pour le texte, Alef pour les catégories) et la palette de couleurs (vert aqua, bleu marine, noir). Cela prouve que nous avons cadré les contraintes visuelles du projet en amont, étape clé de l'analyse des modalités d'organisation."
+            caption: "Arborescence du site FishDB",
+            explication: "L'arborescence détaille la structure complète du site (Accueil, Espèces, Catégories de poissons, Nourriture, À propos…) avec toutes les sous-pages. Cette planification préalable prouve que nous avons bien analysé les objectifs fonctionnels du projet avant de commencer le développement."
           },
           {
             src: "charteGraphique.jpg",
-            caption: "Arborescence du site FishDB",
-            explication: "L'arborescence détaille la structure complète du site (Accueil, Espèces, Catégories de poissons, Nourriture, À propos…) avec toutes les sous-pages. Cette planification préalable prouve que nous avons bien analysé les objectifs fonctionnels du projet avant de commencer le développement."
+            caption: "Charte graphique — Polices & couleurs",
+            explication: "La charte graphique constitue un livrable de cadrage élaboré en début de projet : en fixant les polices et la palette de couleurs avant le développement, elle définit des contraintes communes que toute l'équipe doit respecter. C'est un jalon de planification qui évite les allers-retours en cours de développement et garantit la cohérence visuelle du livrable final."
           }
         ]
       }
@@ -591,7 +579,7 @@ const COMPETENCES = {
           "Mise à disposition des services réseau configurés"
         ],
         preuve: "PREUVE_vm.pdf",
-        image: "IMG_vm.png",
+        image: "VM.jpg",
         imageCaption: "Machines virtuelles configurées sous VirtualBox"
       },
       {
@@ -605,8 +593,23 @@ const COMPETENCES = {
           "Vérification de l'accès utilisateur au service"
         ],
         preuve: "PREUVE_bdd.pdf",
-        image: "IMG_bdd.png",
-        imageCaption: "Interface PHPmyadmin avec la base déployée"
+        images: [
+          {
+            src: "php1.jpg",
+            caption: "Connexion PHPmyadmin — interface de gestion MySQL",
+            explication: "La page de connexion PHPmyadmin confirme que le service MySQL est déployé et accessible : l'interface est opérationnelle, configurée en français, et prête à être utilisée par les utilisateurs autorisés via un identifiant et un mot de passe."
+          },
+          {
+            src: "SQL.jpg",
+            caption: "Script SQL — création et mise en production des tables",
+            explication: "Le script SQL exécuté sur le serveur MySQL constitue l'acte de mise en production de la base : les tables sont créées avec leurs types et contraintes, les données initiales sont chargées, et le service devient utilisable. Sans cette étape de déploiement, PHPmyadmin n'aurait rien à exposer aux utilisateurs autorisés."
+          },
+          {
+            src: "php2.jpg",
+            caption: "Tables de la base aquarium_virtuel déployées sous PHPmyadmin",
+            explication: "La vue liste les 9 tables actives de la base avec leurs statistiques réelles (lignes, taille). Cela confirme que le service de base de données est pleinement déployé, opérationnel et accessible aux utilisateurs autorisés via PHPmyadmin."
+          }
+        ]
       }
     ]
   },
@@ -642,18 +645,17 @@ const COMPETENCES = {
       {
         num: "01",
         titre: "Site web en équipe · L'Aquarium Virtuel",
-        justification: "Pour alimenter la page 'Dernières actualités' du site L'Aquarium Virtuel, j'ai mis en place une stratégie de veille informationnelle structurée en m'appuyant sur des sources scientifiques et environnementales fiables. J'ai consulté et exploité régulièrement : IFREMER (Institut Français de Recherche pour l'Exploitation de la Mer) pour les données marines françaises, Mongabay pour l'actualité de la biodiversité mondiale, NOAA Fisheries (National Oceanic and Atmospheric Administration) pour les rapports scientifiques sur les espèces marines, et Sea Shepherd pour le suivi des enjeux de conservation. Cette veille m'a permis de publier des articles sourcés et actualisés sur le site.",
+        justification: "Pour alimenter la page 'Dernières actualités' du site L'Aquarium Virtuel, j'ai mis en œuvre une démarche de veille informationnelle structurée : identification de sources fiables, consultation régulière, sélection et hiérarchisation des informations pertinentes, puis publication sur le site. Cette méthode — indépendante du domaine thématique — est directement transposable à une veille IT : c'est la même rigueur qui me permet aujourd'hui de suivre les évolutions technologiques du secteur (voir ma page Veille sur l'IA générative dans le développement logiciel).",
         points: [
-          "Veille sur IFREMER — données et recherches marines françaises",
-          "Veille sur Mongabay — biodiversité et actualités environnementales",
-          "Veille sur NOAA Fisheries — rapports scientifiques sur les espèces marines",
-          "Veille sur Sea Shepherd — conservation et protection des océans",
+          "Identification et sélection de sources fiables et spécialisées",
+          "Consultation régulière et organisée de ces sources",
+          "Hiérarchisation et tri des informations selon leur pertinence",
           "Publication d'articles sourcés dans la section 'Dernières actualités' du site",
-          "Sélection et hiérarchisation des informations pertinentes pour le public cible"
+          "Démarche transposée à la veille IT : suivi de l'IA générative dans le développement (page Veille du portfolio)"
         ],
         preuve: "PREUVE_cybernews.pdf",
         image: "Veille.jpg",
-        imageCaption: "Page 'Dernières actualités' du site — contenu issu de la veille informationnelle"
+        imageCaption: "Page 'Dernières actualités' du site — résultat concret de la veille informationnelle structurée"
       }
     ]
   },
@@ -680,17 +682,85 @@ const COMPETENCES = {
       },
       {
         num: "07",
-        titre: "Certification RGPD",
-        justification: "Obtenir une certification reconnue comme la certification RGPD est un acte de développement professionnel concret : elle atteste de compétences valorisables en entreprise et montre une démarche proactive d'apprentissage.",
+        titre: "Certifications · RGPD · PIX · SecNumacadémie (ANSSI)",
+        justification: "J'ai obtenu trois certifications reconnues qui attestent d'une démarche proactive et structurée de développement professionnel dans le domaine du numérique et de la cybersécurité. Chacune valorise des compétences directement applicables en entreprise et renforce mon identité professionnelle dans le secteur IT.",
         points: [
-          "Démarche volontaire d'obtention d'une certification",
-          "Compétence directement valorisable en entreprise",
-          "Attestation officielle ajoutée au portfolio",
-          "Connaissance d'un cadre légal clé du secteur IT"
+          "Certification RGPD (CNIL) — 5 modules, 100% — cadre légal de la protection des données",
+          "Certification PIX — niveau Indépendant 2, score 394/895 — compétences numériques transversales",
+          "MOOC SecNumacadémie (ANSSI) — 4 modules, 100% — cybersécurité : SSI, authentification, Internet, nomadisme",
+          "Trois attestations officielles intégrées au portfolio",
+          "Démarche volontaire et autonome d'apprentissage certifiant"
         ],
         preuve: "PREUVE_rgpd.pdf",
-        image: "IMG_rgpd.png",
-        imageCaption: "Certification RGPD — preuve de développement professionnel"
+        images: [
+          {
+            src: "certifs.jpg",
+            caption: "Section Cybersécurité du portfolio — 3 certifications",
+            explication: "La section Cybersécurité du portfolio recense les trois certifications obtenues : MOOC SecNumacadémie (ANSSI), Certification PIX et Certification RGPD. Leur présence sur le portfolio public prouve une démarche de valorisation de son identité professionnelle numérique."
+          },
+          {
+            src: "rgpdmoduless.jpg",
+            caption: "CNIL — 5 modules RGPD suivis à 100%",
+            explication: "Les 5 modules de l'Atelier RGPD de la CNIL sont tous complétés à 100% : notions clés, protection des données, responsabilités, DPO et collectivités territoriales. Cette certification atteste d'une maîtrise du cadre légal indispensable dans tout environnement professionnel IT."
+          },
+          {
+            src: "NPO_certifPix.jpg",
+            caption: "Certification PIX — Indépendant 2 · 394/895",
+            explication: "La certification PIX, délivrée le 31/01/2025 au Lycée Augustin Fresnel, valide le niveau Indépendant 2 avec un score de 394/895. Elle atteste de compétences numériques transversales : recherche d'information, outils collaboratifs, sécurité des données personnelles et sobriété numérique."
+          },
+          {
+            src: "MoocDeLansiiAttestation.jpg",
+            caption: "Attestation SecNumacadémie (ANSSI) — 4 modules 100%",
+            explication: "L'attestation SecNumacadémie de l'ANSSI confirme l'obtention du MOOC de cybersécurité avec 100% aux 4 modules : Panorama de la SSI, Sécurité de l'authentification, Sécurité sur Internet, et Sécurité du poste de travail et nomadisme — le tout complété le 12 janvier 2026."
+          }
+        ]
+      }
+    ]
+  },
+  "B1.2.2": {
+    code: "B1.2.2",
+    titre: "B1 — Répondre aux incidents et aux demandes d'assistance et d'évolution",
+    domaine: "b1.2.2 ▸ Traiter des demandes concernant les services réseau et système",
+    description: "Traiter des demandes concernant les services réseau et système en installant, configurant et vérifiant le bon fonctionnement de services réseau (DNS, DHCP, etc.) sur des serveurs dédiés, en garantissant leur disponibilité pour les utilisateurs.",
+    realisations: [
+      {
+        num: "08",
+        titre: "TP Services réseau · DNS & DHCP · Windows Server",
+        justification: "Ces deux TPs m'ont conduit à installer, configurer et valider deux services réseau fondamentaux en entreprise — DNS et DHCP — sur Windows Server en environnement virtualisé. J'ai répondu à des demandes de mise en service concrètes : résolution de noms, attribution automatique d'adresses IP, redondance et surveillance des événements.",
+        points: [
+          "DNS — Installation du rôle DNS et création de la zone techservices.local",
+          "DNS — Création des enregistrements A (srv-dns, intranet, fileserver) et zone inversée PTR",
+          "DNS — Mise en place d'un serveur secondaire (SRV2022-SECONDA) pour la redondance",
+          "DNS — Tests de tolérance de panne : résolution fonctionnelle avec le principal éteint",
+          "DHCP — Installation du rôle DHCP et configuration de l'IP statique 192.168.1.10",
+          "DHCP — Création de l'étendue 192.168.1.150–200, bail 10 min, passerelle et DNS configurés",
+          "DHCP — Réservation d'adresse fixe pour PC-Nathan via adresse MAC",
+          "DHCP — Analyse des trames DORA avec Wireshark (Discover, Offer, Request, Acknowledge)",
+          "DHCP — Vérification client : ipconfig confirme l'IP 192.168.1.151 dans la plage attendue"
+        ],
+        preuve: "NPO-TPDNS__1_.pdf",
+        images: [
+          {
+            src: "IMG_dns_zones.jpg",
+            caption: "Gestionnaire DNS — zones directe et inversée techservices.local",
+            explication: "Le Gestionnaire DNS sur SRV2022-PORET montre la zone de recherche directe techservices.local avec les enregistrements A créés (srv-dns, intranet, fileserver) et la zone inversée 10.168.192.in-addr.arpa. Cela prouve la configuration complète d'un service DNS fonctionnel répondant à une demande réseau."
+          },
+          {
+            src: "IMG_dns_redondance.jpg",
+            caption: "Tests nslookup — résolution avec serveur principal et secondaire",
+            explication: "Les deux captures nslookup côte à côte démontrent que la résolution de noms fonctionne avec le serveur principal (192.168.10.10) ET avec le serveur secondaire seul (192.168.10.11), serveur principal éteint. La redondance est validée : le service réseau est disponible sans interruption."
+          },
+          {
+            src: "IMG_dhcp_etendue.jpg",
+            caption: "Console DHCP — étendue 192.168.1.0 active · réservation PC-Nathan",
+            explication: "La console DHCP montre l'étendue [192.168.1.0] Nathan active avec la plage 150–200, la réservation PC-Nathan (IP 192.168.1.205, MAC 00:0C:29:E8:92:B0) et les options configurées (routeur 192.168.1.254, DNS 192.168.1.10). C'est la preuve d'un service DHCP déployé et opérationnel."
+          },
+          {
+            src: "IMG_dhcp_wireshark.jpg",
+            caption: "Wireshark — capture des 4 trames DORA (filtre bootp)",
+            explication: "La capture Wireshark filtrée sur 'bootp' montre les 4 échanges DORA : DHCP Discover (client 0.0.0.0 → broadcast), Offer (serveur → client), Request et Acknowledge. L'analyse prouve la maîtrise du fonctionnement protocolaire du service DHCP et la capacité à diagnostiquer des échanges réseau."
+          }
+        ]
       }
     ]
   }
