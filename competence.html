@@ -268,10 +268,13 @@
     }
     .proof-img-wrap img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      object-position: top;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      padding: .5rem;
+      box-sizing: border-box;
     }
     .proof-img-wrap .img-overlay {
       position: absolute;
@@ -875,7 +878,7 @@ function renderPage() {
               ${r.imageDuo.map(img => `
                 <div>
                   <div class="proof-img-wrap" onclick="openLightbox('${img.src}')">
-                    <img src="${img.src}" alt="${img.caption}" loading="lazy" style="height:150px;" />
+                    <img src="${img.src}" alt="${img.caption}" loading="lazy" style="height:auto;max-height:220px;object-fit:contain;padding:.4rem;box-sizing:border-box;" />
                     <div class="img-overlay">\ud83d\udd0d Agrandir</div>
                   </div>
                   <p class="proof-img-caption" style="margin-top:.4rem;">${img.caption}</p>
