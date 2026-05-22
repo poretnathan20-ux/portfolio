@@ -7,10 +7,10 @@
 
 /* ── Variables ── */
 :root {
-  --bg:           #e6e1d5;
-  --bg2:          #edeae0;
-  --bg3:          #d8d2c2;
-  --border:       #bdb690;
+  --bg:           #f5f3ee;
+  --bg2:          #faf9f6;
+  --bg3:          #ece9e0;
+  --border:       #d4cebc;
   --accent:       #3d5c41;       /* vert sauge foncé */
   --accent-light: #d4e8d6;       /* vert pâle pour fonds */
   --accent2:      #7aab80;       /* vert sauge clair secondaire */
@@ -63,7 +63,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  background: rgba(230, 225, 213, 0.92);
+  background: rgba(245, 243, 238, 0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 1px 8px rgba(61,92,65,0.06);

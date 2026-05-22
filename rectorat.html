@@ -70,11 +70,7 @@
         padding: 1.2rem 1.4rem;
         transition: border-color .25s, box-shadow .25s, transform .2s;
       }
-      .real-card:not(.real-card--empty):hover {
-        border-color: rgba(61,92,65,.35);
-        box-shadow: var(--shadow-accent);
-        transform: translateY(-2px);
-      }
+
       .real-card--empty {
         border-style: dashed;
         opacity: .6;
@@ -85,6 +81,8 @@
         gap: 1rem;
         text-decoration: none;
         color: inherit;
+        cursor: default;
+        pointer-events: none;
       }
       .real-num {
         min-width: 28px;
@@ -145,6 +143,20 @@
         border-color: rgba(61,92,65,.25);
         color: var(--accent);
       }
+      a.real-tag--accent {
+        text-decoration: none;
+        transition: background .18s, transform .15s, box-shadow .18s;
+        cursor: pointer;
+        pointer-events: all !important;
+      }
+      a.real-tag--accent:hover {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(61,92,65,.22);
+      }
+      a.real-tag--accent:hover svg { fill: #fff; }
       .real-empty-label {
         font-size: .85rem;
         color: var(--text-muted);
@@ -159,126 +171,100 @@
 
       <!-- 1 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_cybernews.pdf" target="_blank" rel="noopener">
+        <div class="real-link">
           <div class="real-num">01</div>
           <div class="real-body">
-            <div class="real-title">
-              TP Cybernews · Dynamic
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
+            <div class="real-title">TP Cybernews · Dynamic</div>
             <div class="real-comp-main">Travailler en mode projet · Organiser son développement professionnel</div>
             <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.3.3</span>
-              <span class="real-tag real-tag--accent">B1.4.2</span>
-              <span class="real-tag real-tag--accent">B1.6.1</span>
-              <span class="real-tag real-tag--accent">B1.6.2</span>
+              <a href="competence.html?code=B1.3.3" class="real-tag real-tag--accent" title="Voir la compétence B1.3.3">B1.3.3</a>
+              <a href="competence.html?code=B1.4.2" class="real-tag real-tag--accent" title="Voir la compétence B1.4.2">B1.4.2</a>
+              <a href="competence.html?code=B1.6.1" class="real-tag real-tag--accent" title="Voir la compétence B1.6.1">B1.6.1</a>
+              <a href="competence.html?code=B1.6.2" class="real-tag real-tag--accent" title="Voir la compétence B1.6.2">B1.6.2</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 2 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_linkedin.pdf" target="_blank" rel="noopener">
+        <div class="real-link">
           <div class="real-num">02</div>
           <div class="real-body">
-            <div class="real-title">
-              Réseaux sociaux
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
+            <div class="real-title">Réseaux sociaux</div>
             <div class="real-comp-main">Organiser son développement professionnel</div>
             <div class="real-tags">
-              <a class="real-tag real-tag--accent" href="https://www.linkedin.com/in/nathan-poret-887243394" target="_blank" rel="noopener" style="text-decoration:none;">↗ B1.6.3 · LinkedIn</a>
+              <a class="real-tag real-tag--accent" href="competence.html?code=B1.6.3" style="text-decoration:none;pointer-events:all;cursor:pointer;" title="Voir la compétence B1.6.3">↗ B1.6.3 · LinkedIn</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 3 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_github.pdf" target="_blank" rel="noopener">
+        <div class="real-link">
           <div class="real-num">03</div>
           <div class="real-body">
-            <div class="real-title">
-              Mise en ligne de site
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
+            <div class="real-title">Mise en ligne de site</div>
             <div class="real-comp-main">Mettre à disposition des utilisateurs un service informatique</div>
             <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.5.2</span>
+              <a href="competence.html?code=B1.5.2" class="real-tag real-tag--accent" title="Voir la compétence B1.5.2">B1.5.2</a>
+            </div>
+      <div class="real-card">
+        <div class="real-link">
+          <div class="real-num">04</div>
+          <div class="real-body">
+            <div class="real-title">TP HTML</div>
+            <div class="real-comp-main">Gérer le patrimoine informatique · Développer la présence en ligne</div>
+            <div class="real-tags">
+              <a href="competence.html?code=B1.1.2" class="real-tag real-tag--accent" title="Voir la compétence B1.1.2">B1.1.2</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 4 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_html.pdf" target="_blank" rel="noopener">
-          <div class="real-num">04</div>
+        <div class="real-link">
+          <div class="real-num">05</div>
           <div class="real-body">
-            <div class="real-title">
-              TP HTML
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
-            <div class="real-comp-main">Gérer le patrimoine informatique · Développer la présence en ligne</div>
+            <div class="real-title">TP Serveurs VM · Windows Server · Ubuntu · Kali Linux</div>
+            <div class="real-comp-main">Mettre à disposition des utilisateurs un service informatique</div>
             <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.1.2</span>
+              <a href="competence.html?code=B1.5.2" class="real-tag real-tag--accent" title="Voir la compétence B1.5.2">B1.5.2</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 5 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_vm.pdf" target="_blank" rel="noopener">
-          <div class="real-num">05</div>
-          <div class="real-body">
-            <div class="real-title">
-              TP Serveurs VM · Windows Server · Ubuntu · Kali Linux
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
-            <div class="real-comp-main">Mettre à disposition des utilisateurs un service informatique</div>
-            <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.5.2</span>
-            </div>
-          </div>
-        </a>
-      </div>
-
-      <!-- 6 -->
-      <div class="real-card">
-        <a class="real-link" href="PREUVE_bdd.pdf" target="_blank" rel="noopener">
+        <div class="real-link">
           <div class="real-num">06</div>
           <div class="real-body">
-            <div class="real-title">
-              Base de données · SQL · PHPmyadmin
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
+            <div class="real-title">Base de données · SQL · PHPmyadmin</div>
             <div class="real-comp-main">Gérer le patrimoine informatique · Mettre à disposition des utilisateurs un service informatique</div>
             <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.1.1</span>
-              <span class="real-tag real-tag--accent">B1.5.2</span>
+              <a href="competence.html?code=B1.1.1" class="real-tag real-tag--accent" title="Voir la compétence B1.1.1">B1.1.1</a>
+              <a href="competence.html?code=B1.5.2" class="real-tag real-tag--accent" title="Voir la compétence B1.5.2">B1.5.2</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 7 -->
       <div class="real-card">
-        <a class="real-link" href="PREUVE_rgpd.pdf" target="_blank" rel="noopener">
+        <div class="real-link">
           <div class="real-num">07</div>
           <div class="real-body">
-            <div class="real-title">
-              Certification RGPD
-              <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            </div>
+            <div class="real-title">Certification RGPD</div>
             <div class="real-comp-main">Gérer le patrimoine informatique · Organiser son développement professionnel</div>
             <div class="real-tags">
-              <span class="real-tag real-tag--accent">B1.1.4</span>
-              <span class="real-tag real-tag--accent">B1.6.3</span>
+              <a href="competence.html?code=B1.1.4" class="real-tag real-tag--accent" title="Voir la compétence B1.1.4">B1.1.4</a>
+              <a href="competence.html?code=B1.6.3" class="real-tag real-tag--accent" title="Voir la compétence B1.6.3">B1.6.3</a>
             </div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 8 — vide -->

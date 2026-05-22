@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compétence · Nathan Poret</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .comp-detail-hero {
+      padding: 5rem 2rem 3rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .comp-code-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.25);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: .82rem;
+      font-weight: 700;
+      padding: .35em .9em;
+      border-radius: 6px;
+      letter-spacing: .06em;
+      margin-bottom: 1.2rem;
+    }
+    .comp-code-badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .comp-detail-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: .8rem;
+    }
+    .comp-detail-hero .comp-domaine {
+      font-size: .85rem;
+      color: var(--text-muted);
+      letter-spacing: .05em;
+    }
+    .comp-detail-hero .comp-domaine span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .75rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      margin-bottom: 2rem;
+    }
+    .breadcrumb a { color: var(--text-muted); }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb-sep { opacity: .4; }
+
+    /* Info banner */
+    .info-banner {
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
+    }
+    .info-banner svg {
+      width: 20px; height: 20px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .info-banner p { font-size: .86rem; color: var(--text-sub); line-height: 1.65; }
+    .info-banner strong { color: var(--accent); }
+
+    /* Back button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem 1rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      color: var(--text-sub);
+      transition: all .2s;
+      margin-bottom: 2rem;
+    }
+    .back-btn:hover {
+      background: var(--accent-light);
+      border-color: rgba(61,92,65,.3);
+      color: var(--accent);
+    }
+    .back-btn svg { width: 14px; height: 14px; }
+
+    /* ══ CARTE RÉALISATION ══ */
+    .real-proof-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color .25s, box-shadow .25s, transform .2s;
+    }
+    .real-proof-card:hover {
+      border-color: rgba(61,92,65,.3);
+      box-shadow: var(--shadow-accent);
+      transform: translateY(-2px);
+    }
+
+    /* En-tête de carte */
+    .real-proof-header {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1.1rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg3);
+    }
+    .real-proof-num {
+      min-width: 30px; height: 30px;
+      border-radius: 7px;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: .75rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .real-proof-header-title {
+      font-family: var(--font-head);
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--text);
+      flex: 1;
+    }
+    .real-proof-pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .35rem .85rem;
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.25);
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background .18s, color .18s;
+      flex-shrink: 0;
+    }
+    .real-proof-pdf-btn:hover {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .real-proof-pdf-btn svg { width: 11px; height: 11px; }
+
+    /* Corps : layout 2 colonnes */
+    .real-proof-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media (max-width: 680px) {
+      .real-proof-body { grid-template-columns: 1fr; }
+    }
+
+    /* Colonne gauche : justification */
+    .real-proof-justify {
+      padding: 1.5rem 1.6rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    @media (max-width: 680px) {
+      .real-proof-justify { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    .justify-label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--accent);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+    .justify-label::before {
+      content: '';
+      width: 14px; height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+    }
+
+    .justify-text {
+      font-size: .86rem;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    .justify-points {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin-top: .2rem;
+    }
+    .justify-point {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .84rem;
+      color: var(--text-sub);
+      line-height: 1.55;
+    }
+    .justify-point::before {
+      content: '▸';
+      color: var(--accent);
+      font-size: .75rem;
+      margin-top: .15rem;
+      flex-shrink: 0;
+    }
+
+    /* Colonne droite : image */
+    .real-proof-image {
+      padding: 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+    }
+
+    .proof-img-wrap {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg3);
+      cursor: pointer;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .proof-img-wrap:hover {
+      box-shadow: 0 6px 24px rgba(61,92,65,.18);
+      transform: scale(1.01);
+    }
+    .proof-img-wrap img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .proof-img-wrap .img-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(31,42,31,.7) 0%, transparent 100%);
+      padding: .6rem .8rem;
+      font-size: .7rem;
+      color: rgba(255,255,255,.85);
+      font-family: var(--font-mono);
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .proof-img-wrap:hover .img-overlay { opacity: 1; }
+
+    /* Placeholder quand pas d'image */
+    .proof-img-placeholder {
+      width: 100%;
+      height: 160px;
+      border: 2px dashed var(--border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      color: var(--text-muted);
+      font-size: .8rem;
+      font-family: var(--font-mono);
+    }
+    .proof-img-placeholder svg { width: 28px; height: 28px; opacity: .3; }
+
+    .proof-img-caption {
+      font-size: .72rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15,20,15,.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      backdrop-filter: blur(6px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      object-fit: contain;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.22); }
+
+    /* Not found */
+    .not-found-msg {
+      text-align: center; padding: 4rem 2rem;
+    }
+    .not-found-msg h2 {
+      font-family: var(--font-head); font-size: 1.5rem;
+      color: var(--text); margin-bottom: .8rem;
+    }
+    .not-found-msg p { color: var(--text-muted); }
+    .not-found-msg a {
+      display: inline-block; margin-top: 1.5rem;
+      padding: .55rem 1.2rem;
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.25);
+      border-radius: 8px; font-size: .85rem;
+      font-family: var(--font-mono); color: var(--accent);
+    }
+
+    .comp-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-dot"></span>
+    Nathan Poret · Portfolio
+  </a>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link">CV</a>
+    <a href="veille.html"   class="nav-link">Veille</a>
+    <a href="rectorat.html" class="nav-link active">Rectorat</a>
+  </div>
+</nav>
+
+<div id="comp-content"></div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="Preuve agrandie" onclick="event.stopPropagation()" />
+</div>
+
+<footer>
+  Portfolio de <a href="index.html">Nathan Poret</a> · BTS SIO SLAM · Session 2026 · Lycée La Châtaigneraie
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   BASE DE DONNÉES DES COMPÉTENCES
+   Pour chaque réalisation :
+     - justification : explication textuelle du lien avec la compétence
+     - points        : liste de points concrets (facultatif)
+     - image         : chemin vers une capture d'écran / photo (facultatif)
+     - imageCaption  : légende sous l'image
+   ══════════════════════════════════════════════════════════ */
+const COMPETENCES = {
+  "B1.1.1": {
+    code: "B1.1.1",
+    titre: "Recenser et identifier les ressources numériques",
+    domaine: "B1 — Gérer le patrimoine informatique",
+    description: "Identifier et recenser les ressources matérielles et logicielles d'un système d'information, notamment les bases de données, les accès et les droits.",
+    realisations: [
+      {
+        num: "06",
+        titre: "Base de données · SQL · PHPmyadmin",
+        justification: "Ce TP m'a permis de recenser et structurer toutes les ressources d'une base de données relationnelle : tables, champs, types, clés primaires et étrangères, relations. J'ai documenté l'architecture du schéma pour en assurer la traçabilité.",
+        points: [
+          "Identification des entités et de leurs attributs",
+          "Recensement des relations et cardinalités",
+          "Documentation du schéma via PHPmyadmin",
+          "Contrôle des droits d'accès à la base"
+        ],
+        preuve: "PREUVE_bdd.pdf",
+        image: "IMG_bdd.png",
+        imageCaption: "Capture du schéma de base de données sous PHPmyadmin"
+      }
+    ]
+  },
+  "B1.1.2": {
+    code: "B1.1.2",
+    titre: "Exploiter des référentiels, normes et standards",
+    domaine: "B1 — Gérer le patrimoine informatique",
+    description: "Utiliser des référentiels, normes et standards en vigueur pour les pratiques de développement et de mise en ligne.",
+    realisations: [
+      {
+        num: "04",
+        titre: "TP HTML",
+        justification: "La réalisation de ce TP HTML m'a conduit à appliquer les normes W3C et les standards du développement web, notamment la sémantique HTML5, l'accessibilité et la validation du code via le validateur W3C.",
+        points: [
+          "Respect de la sémantique HTML5 (balises structurelles)",
+          "Validation du code via le validateur W3C",
+          "Application des bonnes pratiques CSS (séparation fond/forme)",
+          "Prise en compte des standards d'accessibilité"
+        ],
+        preuve: "PREUVE_html.pdf",
+        image: "IMG_html.png",
+        imageCaption: "Rendu du TP HTML avec respect des normes W3C"
+      }
+    ]
+  },
+  "B1.1.4": {
+    code: "B1.1.4",
+    titre: "Mettre en place et vérifier les niveaux d'habilitation associés à un service",
+    domaine: "B1 — Gérer le patrimoine informatique",
+    description: "Identifier les règles et niveaux d'habilitation, notamment dans le cadre du RGPD et de la protection des données.",
+    realisations: [
+      {
+        num: "07",
+        titre: "Certification RGPD",
+        justification: "La certification RGPD m'a donné les bases théoriques et pratiques pour comprendre les niveaux d'habilitation dans le traitement des données personnelles : qui peut accéder à quoi, sous quelles conditions, et comment documenter ces droits.",
+        points: [
+          "Notions de consentement et de droits des personnes",
+          "Comprendre les rôles : responsable de traitement, sous-traitant, DPO",
+          "Registre des traitements et cartographie des accès",
+          "Obligations légales de sécurisation des données"
+        ],
+        preuve: "PREUVE_rgpd.pdf",
+        image: "IMG_rgpd.png",
+        imageCaption: "Attestation de certification RGPD obtenue"
+      }
+    ]
+  },
+  "B1.3.3": {
+    code: "B1.3.3",
+    titre: "Participer à la valorisation de l'image de l'organisation sur les médias numériques",
+    domaine: "B1 — Travailler en mode projet",
+    description: "Contribuer à la présence numérique professionnelle de l'organisation via les outils de communication digitale.",
+    realisations: [
+      {
+        num: "01",
+        titre: "TP Cybernews · Dynamic",
+        justification: "Dans ce TP, j'ai contribué à la production de contenus numériques sur la cybersécurité diffusés sur les supports de l'organisation, participant ainsi à valoriser l'image de l'établissement sur les médias numériques.",
+        points: [
+          "Production de contenu de veille diffusé numériquement",
+          "Mise en forme professionnelle des informations",
+          "Contribution à l'image numérique de l'établissement",
+          "Utilisation d'outils de publication numériques"
+        ],
+        preuve: "PREUVE_cybernews.pdf",
+        image: "IMG_cybernews.png",
+        imageCaption: "Extrait du travail réalisé dans le TP Cybernews"
+      }
+    ]
+  },
+  "B1.4.2": {
+    code: "B1.4.2",
+    titre: "Analyser les objectifs et les modalités d'organisation d'un projet",
+    domaine: "B1 — Travailler en mode projet",
+    description: "Identifier les objectifs, les contraintes et les étapes d'un projet informatique afin d'en organiser le déroulement.",
+    realisations: [
+      {
+        num: "01",
+        titre: "TP Cybernews · Dynamic",
+        justification: "Ce projet m'a amené à analyser ses objectifs (produire une veille sur la cybersécurité), à identifier les contraintes (délais, outils imposés) et à organiser les étapes de réalisation de façon méthodique.",
+        points: [
+          "Identification des livrables attendus",
+          "Découpage du projet en étapes planifiées",
+          "Analyse des contraintes techniques et temporelles",
+          "Organisation du travail en mode projet collaboratif"
+        ],
+        preuve: "PREUVE_cybernews.pdf",
+        image: "IMG_cybernews.png",
+        imageCaption: "Extrait du planning et de l'organisation projet"
+      }
+    ]
+  },
+  "B1.5.2": {
+    code: "B1.5.2",
+    titre: "Déployer un service",
+    domaine: "B1 — Mettre à disposition des utilisateurs un service informatique",
+    description: "Installer, configurer et mettre en ligne un service informatique (serveur, application web, machine virtuelle...).",
+    realisations: [
+      {
+        num: "03",
+        titre: "Mise en ligne de site · GitHub Pages",
+        justification: "J'ai déployé ce portfolio sur GitHub Pages : configuration du dépôt, activation de l'hébergement statique, vérification de l'accessibilité publique via une URL. C'est un déploiement concret d'un service web disponible pour tous les utilisateurs.",
+        points: [
+          "Création et configuration du dépôt GitHub",
+          "Activation de GitHub Pages et choix de la branche source",
+          "Vérification de la disponibilité du service en ligne",
+          "Mise à jour et maintenance via git push"
+        ],
+        preuve: "PREUVE_github.pdf",
+        image: "IMG_github.png",
+        imageCaption: "Portfolio déployé et accessible sur GitHub Pages"
+      },
+      {
+        num: "05",
+        titre: "TP Serveurs VM · Windows Server · Ubuntu · Kali Linux",
+        justification: "Ce TP consistait à installer et configurer plusieurs machines virtuelles avec des systèmes d'exploitation différents, puis à les rendre opérationnelles comme services utilisables dans un réseau.",
+        points: [
+          "Installation de VirtualBox et création des VMs",
+          "Configuration réseau (NAT, pont) pour chaque machine",
+          "Installation des OS : Windows Server, Ubuntu, Kali Linux",
+          "Mise à disposition des services réseau configurés"
+        ],
+        preuve: "PREUVE_vm.pdf",
+        image: "IMG_vm.png",
+        imageCaption: "Machines virtuelles configurées sous VirtualBox"
+      },
+      {
+        num: "06",
+        titre: "Base de données · SQL · PHPmyadmin",
+        justification: "La mise en place de la base de données inclut son déploiement sur un serveur accessible : configuration de MySQL, création des tables, ouverture de l'accès via PHPmyadmin pour les utilisateurs autorisés.",
+        points: [
+          "Installation et configuration du serveur MySQL",
+          "Déploiement de l'interface PHPmyadmin",
+          "Création de la base et des tables",
+          "Vérification de l'accès utilisateur au service"
+        ],
+        preuve: "PREUVE_bdd.pdf",
+        image: "IMG_bdd.png",
+        imageCaption: "Interface PHPmyadmin avec la base déployée"
+      }
+    ]
+  },
+  "B1.6.1": {
+    code: "B1.6.1",
+    titre: "Mettre en place son environnement d'apprentissage personnel",
+    domaine: "B1 — Organiser son développement professionnel",
+    description: "Organiser et structurer son environnement de travail et d'apprentissage pour développer ses compétences.",
+    realisations: [
+      {
+        num: "01",
+        titre: "TP Cybernews · Dynamic",
+        justification: "Pour réaliser ce TP, j'ai structuré mon environnement d'apprentissage : choix des outils de veille, organisation des sources d'information, mise en place d'un flux de lecture régulier pour rester informé sur la cybersécurité.",
+        points: [
+          "Sélection et organisation des sources de veille",
+          "Mise en place d'alertes et de flux RSS",
+          "Structuration du travail de collecte et d'analyse",
+          "Utilisation d'outils numériques adaptés à la veille"
+        ],
+        preuve: "PREUVE_cybernews.pdf",
+        image: "IMG_cybernews.png",
+        imageCaption: "Organisation de l'environnement de veille mis en place"
+      }
+    ]
+  },
+  "B1.6.2": {
+    code: "B1.6.2",
+    titre: "Mettre en valeur les acquis de sa formation",
+    domaine: "B1 — Organiser son développement professionnel",
+    description: "Documenter et valoriser les compétences acquises au cours de la formation via un portfolio ou des réalisations concrètes.",
+    realisations: [
+      {
+        num: "01",
+        titre: "TP Cybernews · Dynamic",
+        justification: "Ce TP a été intégré dans mon portfolio comme preuve tangible de mes acquis. Il documente les compétences développées en veille technologique et en cybersécurité, rendant mes apprentissages visibles et évaluables.",
+        points: [
+          "Intégration de la réalisation dans le portfolio",
+          "Documentation des compétences mobilisées",
+          "Mise en forme professionnelle pour la présentation",
+          "Valorisation des acquis auprès des évaluateurs"
+        ],
+        preuve: "PREUVE_cybernews.pdf",
+        image: "IMG_cybernews.png",
+        imageCaption: "Réalisation documentée et intégrée au portfolio"
+      }
+    ]
+  },
+  "B1.6.3": {
+    code: "B1.6.3",
+    titre: "Développer son projet professionnel",
+    domaine: "B1 — Organiser son développement professionnel",
+    description: "Construire et développer son identité professionnelle via des outils numériques et des certifications reconnues.",
+    realisations: [
+      {
+        num: "02",
+        titre: "Réseaux sociaux · LinkedIn",
+        justification: "La création de mon profil LinkedIn me permet de construire une identité numérique professionnelle visible, de constituer un réseau de contacts dans l'IT, et de suivre l'actualité du secteur pour affiner mon projet professionnel.",
+        points: [
+          "Création d'un profil LinkedIn complet et professionnel",
+          "Mise en avant des formations, certifications et compétences",
+          "Constitution d'un réseau de contacts dans le secteur IT",
+          "Suivi de l'actualité métier pour orienter le projet pro"
+        ],
+        preuve: "PREUVE_linkedin.pdf",
+        lienExterne: "https://www.linkedin.com/in/nathan-poret-887243394",
+        image: "IMG_linkedin.png",
+        imageCaption: "Profil LinkedIn Nathan Poret — identité numérique professionnelle"
+      },
+      {
+        num: "07",
+        titre: "Certification RGPD",
+        justification: "Obtenir une certification reconnue comme la certification RGPD est un acte de développement professionnel concret : elle atteste de compétences valorisables en entreprise et montre une démarche proactive d'apprentissage.",
+        points: [
+          "Démarche volontaire d'obtention d'une certification",
+          "Compétence directement valorisable en entreprise",
+          "Attestation officielle ajoutée au portfolio",
+          "Connaissance d'un cadre légal clé du secteur IT"
+        ],
+        preuve: "PREUVE_rgpd.pdf",
+        image: "IMG_rgpd.png",
+        imageCaption: "Certification RGPD — preuve de développement professionnel"
+      }
+    ]
+  }
+};
+
+function getParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+function renderPage() {
+  const code = getParam('code');
+  const container = document.getElementById('comp-content');
+
+  if (!code || !COMPETENCES[code]) {
+    container.innerHTML = `
+      <div class="page-body" style="padding-top:5rem">
+        <div class="not-found-msg">
+          <h2>Compétence introuvable</h2>
+          <p>Le code "${code || '?'}" ne correspond à aucune compétence référencée.</p>
+          <a href="rectorat.html">← Retour au tableau de synthèse</a>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const comp = COMPETENCES[code];
+  document.title = `${comp.code} · Nathan Poret`;
+
+  const realisationsHTML = comp.realisations.map(r => {
+
+    /* ── Colonne gauche : justification ── */
+    const pointsHTML = r.points
+      ? r.points.map(p => `<div class="justify-point">${p}</div>`).join('')
+      : '';
+
+    const leftCol = `
+      <div class="real-proof-justify">
+        <div class="justify-label">Pourquoi ça prouve la compétence</div>
+        <p class="justify-text">${r.justification}</p>
+        ${pointsHTML ? `<div class="justify-points">${pointsHTML}</div>` : ''}
+        ${r.lienExterne ? `
+          <a href="${r.lienExterne}" target="_blank" rel="noopener" style="
+            display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem;
+            font-size:.78rem;font-family:var(--font-mono);color:var(--accent);
+            text-decoration:none;border-bottom:1px dashed rgba(61,92,65,.3);
+            padding-bottom:1px;width:fit-content;">
+            <svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+            Voir le profil LinkedIn
+          </a>` : ''}
+      </div>`;
+
+    /* ── Colonne droite : image ── */
+    const imgHTML = r.image
+      ? `<div class="proof-img-wrap" onclick="openLightbox('${r.image}')">
+           <img src="${r.image}" alt="${r.titre}" loading="lazy" />
+           <div class="img-overlay">🔍 Cliquer pour agrandir</div>
+         </div>
+         <p class="proof-img-caption">${r.imageCaption || ''}</p>`
+      : `<div class="proof-img-placeholder">
+           <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+           Ajouter une capture d'écran<br/>
+           <span style="font-size:.68rem;opacity:.7">(ex: IMG_${r.num}.png)</span>
+         </div>`;
+
+    const rightCol = `
+      <div class="real-proof-image">
+        ${imgHTML}
+      </div>`;
+
+    /* ── Bouton PDF ── */
+    const pdfBtn = r.preuve
+      ? `<a class="real-proof-pdf-btn" href="${r.preuve}" target="_blank" rel="noopener">
+           <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+           Voir la preuve PDF
+         </a>`
+      : `<span style="font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono)">Preuve à ajouter</span>`;
+
+    return `
+      <div class="real-proof-card reveal">
+        <div class="real-proof-header">
+          <div class="real-proof-num">${r.num}</div>
+          <div class="real-proof-header-title">${r.titre}</div>
+          ${pdfBtn}
+        </div>
+        <div class="real-proof-body">
+          ${leftCol}
+          ${rightCol}
+        </div>
+      </div>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="comp-detail-hero">
+      <div class="breadcrumb">
+        <a href="rectorat.html">Rectorat</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>${comp.code}</span>
+      </div>
+      <div class="comp-code-badge">${comp.code}</div>
+      <h1>${comp.titre}</h1>
+      <p class="comp-domaine">Domaine : <span>${comp.domaine}</span></p>
+    </div>
+
+    <div class="page-body" style="padding-top:0;max-width:960px">
+
+      <div class="info-banner reveal">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <p><strong>Définition :</strong> ${comp.description}</p>
+      </div>
+
+      <a class="back-btn reveal" href="rectorat.html">
+        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Retour au tableau de synthèse
+      </a>
+
+      <section class="block">
+        <h2 class="block-title">Réalisations prouvant cette compétence</h2>
+        <div class="comp-list">
+          ${realisationsHTML}
+        </div>
+      </section>
+    </div>`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderPage();
+  setTimeout(() => {
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      el.style.transition = 'opacity .55s ease, transform .55s ease';
+      el.style.transitionDelay = Math.min(i * 0.08, 0.4) + 's';
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      }, 60);
+    });
+  }, 30);
+});
+</script>
+<script src="nav.js"></script>
+</body>
+</html>
