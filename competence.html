@@ -311,6 +311,34 @@
       line-height: 1.4;
     }
 
+    /* Multi-image layout */
+    .real-proof-image--multi {
+      overflow-y: auto;
+      max-height: 560px;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+    }
+    .proof-multi-img-block {
+      width: 100%;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: .2rem;
+    }
+    .proof-multi-img-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .proof-img-explication {
+      font-size: .8rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+      margin-top: .5rem;
+      background: var(--bg3);
+      border-left: 3px solid var(--accent);
+      padding: .55rem .75rem;
+      border-radius: 0 6px 6px 0;
+    }
+
     /* Lightbox */
     .lightbox {
       display: none;
@@ -405,9 +433,9 @@
 const COMPETENCES = {
   "B1.1.1": {
     code: "B1.1.1",
-    titre: "Recenser et identifier les ressources numériques",
-    domaine: "B1 — Gérer le patrimoine informatique",
-    description: "Identifier et recenser les ressources matérielles et logicielles d'un système d'information, notamment les bases de données, les accès et les droits.",
+    titre: "B1 — Gérer le patrimoine informatique",
+    domaine: "b1.1.1 ▸ Recenser et identifier les ressources numériques",
+    description: "Recenser et identifier les ressources numériques disponibles dans l'environnement de production : matériels, logiciels, réseaux, services, en vue de constituer et maintenir un inventaire du patrimoine informatique.",
     realisations: [
       {
         num: "06",
@@ -427,9 +455,9 @@ const COMPETENCES = {
   },
   "B1.1.2": {
     code: "B1.1.2",
-    titre: "Exploiter des référentiels, normes et standards",
-    domaine: "B1 — Gérer le patrimoine informatique",
-    description: "Utiliser des référentiels, normes et standards en vigueur pour les pratiques de développement et de mise en ligne.",
+    titre: "B1 — Gérer le patrimoine informatique",
+    domaine: "b1.1.2 ▸ Exploiter des référentiels, normes et standards adoptés par le prestataire informatique",
+    description: "Exploiter des référentiels, normes et standards adoptés par le prestataire informatique pour garantir la qualité, l'interopérabilité et la conformité des solutions mises en œuvre.",
     realisations: [
       {
         num: "04",
@@ -449,9 +477,9 @@ const COMPETENCES = {
   },
   "B1.1.4": {
     code: "B1.1.4",
-    titre: "Mettre en place et vérifier les niveaux d'habilitation associés à un service",
-    domaine: "B1 — Gérer le patrimoine informatique",
-    description: "Identifier les règles et niveaux d'habilitation, notamment dans le cadre du RGPD et de la protection des données.",
+    titre: "B1 — Gérer le patrimoine informatique",
+    domaine: "b1.1.4 ▸ Vérifier les conditions de la continuité d'un service informatique",
+    description: "Vérifier les conditions de la continuité d'un service informatique : s'assurer que les mécanismes de disponibilité, de redondance et de reprise sont en place pour garantir un fonctionnement sans interruption.",
     realisations: [
       {
         num: "07",
@@ -471,13 +499,13 @@ const COMPETENCES = {
   },
   "B1.3.3": {
     code: "B1.3.3",
-    titre: "Participer à la valorisation de l'image de l'organisation sur les médias numériques",
-    domaine: "B1 — Travailler en mode projet",
-    description: "Contribuer à la présence numérique professionnelle de l'organisation via les outils de communication digitale.",
+    titre: "B1 — Traiter les demandes de services aux utilisateurs",
+    domaine: "b1.3.3 ▸ Participer à l'évolution d'un site Web exploitant les données de l'organisation",
+    description: "Participer à l'évolution d'un site Web exploitant les données de l'organisation en contribuant à la mise à jour des contenus, à l'amélioration des fonctionnalités et à l'adaptation aux besoins des utilisateurs.",
     realisations: [
       {
         num: "01",
-        titre: "TP Cybernews · Dynamic",
+        titre: "Site web en équipe",
         justification: "Dans ce TP, j'ai contribué à la production de contenus numériques sur la cybersécurité diffusés sur les supports de l'organisation, participant ainsi à valoriser l'image de l'établissement sur les médias numériques.",
         points: [
           "Production de contenu de veille diffusé numériquement",
@@ -493,31 +521,47 @@ const COMPETENCES = {
   },
   "B1.4.2": {
     code: "B1.4.2",
-    titre: "Analyser les objectifs et les modalités d'organisation d'un projet",
-    domaine: "B1 — Travailler en mode projet",
-    description: "Identifier les objectifs, les contraintes et les étapes d'un projet informatique afin d'en organiser le déroulement.",
+    titre: "B1 — Travailler en mode projet",
+    domaine: "b1.4.2 ▸ Planifier les activités",
+    description: "Planifier les activités d'un projet informatique en définissant les tâches, les jalons, les ressources nécessaires et en établissant un calendrier réaliste permettant de respecter les délais et les objectifs fixés.",
     realisations: [
       {
         num: "01",
-        titre: "TP Cybernews · Dynamic",
-        justification: "Ce projet m'a amené à analyser ses objectifs (produire une veille sur la cybersécurité), à identifier les contraintes (délais, outils imposés) et à organiser les étapes de réalisation de façon méthodique.",
+        titre: "Site web en équipe",
+        justification: "Ce projet en équipe consistait à concevoir et développer un site web collaboratif (FishDB). Nous avons analysé ensemble les objectifs du projet, défini les modalités d'organisation (répartition des tâches, calendrier, outils) et suivi l'avancement via Trello. La charte graphique a été élaborée collectivement pour cadrer les choix visuels, et l'arborescence du site a été planifiée dès le départ pour structurer le développement.",
         points: [
-          "Identification des livrables attendus",
-          "Découpage du projet en étapes planifiées",
-          "Analyse des contraintes techniques et temporelles",
+          "Analyse des objectifs du projet et des livrables attendus",
+          "Répartition des tâches entre membres de l'équipe via Trello",
+          "Suivi de l'avancement sprint par sprint (colonnes Trello datées)",
+          "Définition d'une charte graphique commune (polices, couleurs)",
+          "Conception de l'arborescence du site avant le développement",
           "Organisation du travail en mode projet collaboratif"
         ],
-        preuve: "PREUVE_cybernews.pdf",
-        image: "IMG_cybernews.png",
-        imageCaption: "Extrait du planning et de l'organisation projet"
+        images: [
+          {
+            src: "Trello_png.jpg",
+            caption: "Tableau Trello du projet FishDB",
+            explication: "Le tableau Trello organise les tâches par sprint (colonnes datées : 01/10, 02/10, 24/11…). Chaque carte est assignée à un membre de l'équipe, ce qui prouve que nous avons analysé et planifié les modalités d'organisation du projet de façon méthodique et collaborative."
+          },
+          {
+            src: "charteGraphique2.jpg",
+            caption: "Charte graphique — Polices & couleurs",
+            explication: "La charte graphique définit les polices choisies (Jazz LET pour les titres, Pompilus Nautilius pour le texte, Alef pour les catégories) et la palette de couleurs (vert aqua, bleu marine, noir). Cela prouve que nous avons cadré les contraintes visuelles du projet en amont, étape clé de l'analyse des modalités d'organisation."
+          },
+          {
+            src: "charteGraphique.jpg",
+            caption: "Arborescence du site FishDB",
+            explication: "L'arborescence détaille la structure complète du site (Accueil, Espèces, Catégories de poissons, Nourriture, À propos…) avec toutes les sous-pages. Cette planification préalable prouve que nous avons bien analysé les objectifs fonctionnels du projet avant de commencer le développement."
+          }
+        ]
       }
     ]
   },
   "B1.5.2": {
     code: "B1.5.2",
-    titre: "Déployer un service",
-    domaine: "B1 — Mettre à disposition des utilisateurs un service informatique",
-    description: "Installer, configurer et mettre en ligne un service informatique (serveur, application web, machine virtuelle...).",
+    titre: "B1 — Mettre à disposition des utilisateurs un service informatique",
+    domaine: "b1.5.2 ▸ Déployer un service",
+    description: "Déployer un service informatique en procédant à son installation, sa configuration et sa mise en production, en s'assurant de sa disponibilité et de son bon fonctionnement pour les utilisateurs finaux.",
     realisations: [
       {
         num: "03",
@@ -565,13 +609,13 @@ const COMPETENCES = {
   },
   "B1.6.1": {
     code: "B1.6.1",
-    titre: "Mettre en place son environnement d'apprentissage personnel",
-    domaine: "B1 — Organiser son développement professionnel",
-    description: "Organiser et structurer son environnement de travail et d'apprentissage pour développer ses compétences.",
+    titre: "B1 — Organiser son développement professionnel",
+    domaine: "b1.6.1 ▸ Mettre en place son environnement d'apprentissage personnel",
+    description: "Mettre en place son environnement d'apprentissage personnel en sélectionnant et organisant les outils, ressources et méthodes adaptés à son parcours de formation et à ses objectifs professionnels.",
     realisations: [
       {
         num: "01",
-        titre: "TP Cybernews · Dynamic",
+        titre: "Site web en équipe",
         justification: "Pour réaliser ce TP, j'ai structuré mon environnement d'apprentissage : choix des outils de veille, organisation des sources d'information, mise en place d'un flux de lecture régulier pour rester informé sur la cybersécurité.",
         points: [
           "Sélection et organisation des sources de veille",
@@ -587,13 +631,13 @@ const COMPETENCES = {
   },
   "B1.6.2": {
     code: "B1.6.2",
-    titre: "Mettre en valeur les acquis de sa formation",
-    domaine: "B1 — Organiser son développement professionnel",
-    description: "Documenter et valoriser les compétences acquises au cours de la formation via un portfolio ou des réalisations concrètes.",
+    titre: "B1 — Organiser son développement professionnel",
+    domaine: "b1.6.2 ▸ Mettre en œuvre des outils et stratégies de veille informationnelle",
+    description: "Mettre en œuvre des outils et stratégies de veille informationnelle pour se tenir informé des évolutions technologiques, réglementaires et métier du secteur informatique.",
     realisations: [
       {
         num: "01",
-        titre: "TP Cybernews · Dynamic",
+        titre: "Site web en équipe",
         justification: "Ce TP a été intégré dans mon portfolio comme preuve tangible de mes acquis. Il documente les compétences développées en veille technologique et en cybersécurité, rendant mes apprentissages visibles et évaluables.",
         points: [
           "Intégration de la réalisation dans le portfolio",
@@ -609,9 +653,9 @@ const COMPETENCES = {
   },
   "B1.6.3": {
     code: "B1.6.3",
-    titre: "Développer son projet professionnel",
-    domaine: "B1 — Organiser son développement professionnel",
-    description: "Construire et développer son identité professionnelle via des outils numériques et des certifications reconnues.",
+    titre: "B1 — Organiser son développement professionnel",
+    domaine: "b1.6.3 ▸ Gérer son identité professionnelle",
+    description: "Gérer son identité professionnelle en construisant et en maintenant une image cohérente sur les réseaux et supports numériques, en valorisant ses compétences, ses réalisations et son parcours auprès des acteurs du secteur.",
     realisations: [
       {
         num: "02",
@@ -682,63 +726,77 @@ function renderPage() {
 
   const realisationsHTML = comp.realisations.map(r => {
 
-    /* ── Colonne gauche : justification ── */
     const pointsHTML = r.points
       ? r.points.map(p => `<div class="justify-point">${p}</div>`).join('')
       : '';
 
-    const leftCol = `
-      <div class="real-proof-justify">
-        <div class="justify-label">Pourquoi ça prouve la compétence</div>
-        <p class="justify-text">${r.justification}</p>
-        ${pointsHTML ? `<div class="justify-points">${pointsHTML}</div>` : ''}
-        ${r.lienExterne ? `
-          <a href="${r.lienExterne}" target="_blank" rel="noopener" style="
-            display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem;
-            font-size:.78rem;font-family:var(--font-mono);color:var(--accent);
-            text-decoration:none;border-bottom:1px dashed rgba(61,92,65,.3);
-            padding-bottom:1px;width:fit-content;">
-            <svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-            Voir le profil LinkedIn
-          </a>` : ''}
+    const lienHTML = r.lienExterne ? `
+      <a href="${r.lienExterne}" target="_blank" rel="noopener" style="
+        display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem;
+        font-size:.78rem;font-family:var(--font-mono);color:var(--accent);
+        text-decoration:none;border-bottom:1px dashed rgba(61,92,65,.3);
+        padding-bottom:1px;width:fit-content;">
+        <svg viewBox="0 0 24 24" style="width:12px;height:12px"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+        Voir le profil LinkedIn
+      </a>` : '';
+
+    /* Cas A : plusieurs images -> un bloc (desc gauche / image droite) par image */
+    if (r.images && r.images.length > 0) {
+      const blocksHTML = r.images.map((img, i) => `
+        <div class="real-proof-body" style="${i > 0 ? 'border-top:1px solid var(--border)' : ''}">
+          <div class="real-proof-justify">
+            <div class="justify-label">Pourquoi \u00e7a prouve la comp\u00e9tence</div>
+            <p class="justify-text">${img.explication}</p>
+            ${i === 0 && pointsHTML ? `<div class="justify-points">${pointsHTML}</div>` : ''}
+            ${i === 0 ? lienHTML : ''}
+          </div>
+          <div class="real-proof-image">
+            <div class="proof-img-wrap" onclick="openLightbox('${img.src}')">
+              <img src="${img.src}" alt="${img.caption}" loading="lazy" />
+              <div class="img-overlay">\ud83d\udd0d Cliquer pour agrandir</div>
+            </div>
+            <p class="proof-img-caption">${img.caption}</p>
+          </div>
+        </div>`).join('');
+      return `
+      <div class="real-proof-card reveal">
+        <div class="real-proof-header">
+          <div class="real-proof-num">${r.num}</div>
+          <div class="real-proof-header-title">${r.titre}</div>
+        </div>
+        ${blocksHTML}
       </div>`;
+    }
 
-    /* ── Colonne droite : image ── */
-    const imgHTML = r.image
-      ? `<div class="proof-img-wrap" onclick="openLightbox('${r.image}')">
-           <img src="${r.image}" alt="${r.titre}" loading="lazy" />
-           <div class="img-overlay">🔍 Cliquer pour agrandir</div>
-         </div>
-         <p class="proof-img-caption">${r.imageCaption || ''}</p>`
-      : `<div class="proof-img-placeholder">
-           <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-           Ajouter une capture d'écran<br/>
-           <span style="font-size:.68rem;opacity:.7">(ex: IMG_${r.num}.png)</span>
-         </div>`;
-
-    const rightCol = `
-      <div class="real-proof-image">
-        ${imgHTML}
+    /* Cas B : image unique ou placeholder */
+    let imgHTML = r.image ? `
+      <div class="proof-img-wrap" onclick="openLightbox('${r.image}')">
+        <img src="${r.image}" alt="${r.titre}" loading="lazy" />
+        <div class="img-overlay">\ud83d\udd0d Cliquer pour agrandir</div>
+      </div>
+      <p class="proof-img-caption">${r.imageCaption || ''}</p>`
+    : `<div class="proof-img-placeholder">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        Ajouter une capture d'\u00e9cran<br/>
+        <span style="font-size:.68rem;opacity:.7">(ex: IMG_${r.num}.png)</span>
       </div>`;
-
-    /* ── Bouton PDF ── */
-    const pdfBtn = r.preuve
-      ? `<a class="real-proof-pdf-btn" href="${r.preuve}" target="_blank" rel="noopener">
-           <svg viewBox="0 0 24 24"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-           Voir la preuve PDF
-         </a>`
-      : `<span style="font-size:.72rem;color:var(--text-muted);font-family:var(--font-mono)">Preuve à ajouter</span>`;
 
     return `
       <div class="real-proof-card reveal">
         <div class="real-proof-header">
           <div class="real-proof-num">${r.num}</div>
           <div class="real-proof-header-title">${r.titre}</div>
-          ${pdfBtn}
         </div>
         <div class="real-proof-body">
-          ${leftCol}
-          ${rightCol}
+          <div class="real-proof-justify">
+            <div class="justify-label">Pourquoi \u00e7a prouve la comp\u00e9tence</div>
+            <p class="justify-text">${r.justification}</p>
+            ${pointsHTML ? `<div class="justify-points">${pointsHTML}</div>` : ''}
+            ${lienHTML}
+          </div>
+          <div class="real-proof-image">
+            ${imgHTML}
+          </div>
         </div>
       </div>`;
   }).join('');
@@ -752,7 +810,7 @@ function renderPage() {
       </div>
       <div class="comp-code-badge">${comp.code}</div>
       <h1>${comp.titre}</h1>
-      <p class="comp-domaine">Domaine : <span>${comp.domaine}</span></p>
+      <p class="comp-domaine">Compétence : <span>${comp.domaine}</span></p>
     </div>
 
     <div class="page-body" style="padding-top:0;max-width:960px">
