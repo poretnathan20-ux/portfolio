@@ -713,6 +713,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbo
 
 function renderPage() {
   const code = getParam('code');
+  const realFilter = getParam('real'); // ex: "03", "05", "06"
   const container = document.getElementById('comp-content');
 
   if (!code || !COMPETENCES[code]) {
@@ -728,9 +729,20 @@ function renderPage() {
   }
 
   const comp = COMPETENCES[code];
-  document.title = `${comp.code} · Nathan Poret`;
 
-  const realisationsHTML = comp.realisations.map(r => {
+  // Si un filtre de réalisation est fourni, on n'affiche que celle-là
+  const realisationsToShow = realFilter
+    ? comp.realisations.filter(r => r.num === realFilter)
+    : comp.realisations;
+
+  // Titre de page plus précis quand on filtre une réalisation unique
+  if (realFilter && realisationsToShow.length > 0) {
+    document.title = `${comp.code} · Réal. ${realFilter} · Nathan Poret`;
+  } else {
+    document.title = `${comp.code} · Nathan Poret`;
+  }
+
+  const realisationsHTML = realisationsToShow.map(r => {
 
     const pointsHTML = r.points
       ? r.points.map(p => `<div class="justify-point">${p}</div>`).join('')
