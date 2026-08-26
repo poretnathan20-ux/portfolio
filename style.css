@@ -635,6 +635,10 @@ footer a:hover { color: var(--accent); }
 }
 @media (max-width: 780px) {
   .cv-grid { grid-template-columns: 1fr; }
+  .cv-aside {
+    position: static;
+    top: auto;
+  }
 }
 
 /* ── Aside (colonne gauche) ── */
