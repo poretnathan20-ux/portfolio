@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stage · Nathan Poret</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .stage-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .8rem;
+    }
+    .stage-meta span {
+      font-size: .72rem;
+      font-family: var(--font-mono);
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid rgba(61,92,65,.25);
+      padding: .25em .7em;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .stack-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .6rem;
+    }
+    .stack-tag {
+      font-size: .78rem;
+      font-family: var(--font-mono);
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text-sub);
+      padding: .3em .75em;
+      border-radius: 6px;
+    }
+    .comp-blocks-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .comp-block-head {
+      display: flex;
+      align-items: baseline;
+      gap: .65rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+    }
+    .comp-block-code {
+      font-family: var(--font-mono);
+      font-size: .78rem;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.25);
+      padding: .2em .65em;
+      border-radius: 6px;
+      letter-spacing: .04em;
+      flex-shrink: 0;
+    }
+    .comp-block-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0;
+    }
+    .comp-block-def {
+      font-size: .84rem;
+      color: var(--text-sub);
+      line-height: 1.65;
+      max-width: 780px;
+      margin: .5rem 0 1rem;
+    }
+    .mission-grid {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .mission-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.4rem;
+    }
+    .mission-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .mission-title {
+      font-family: var(--font-head);
+      font-size: .97rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .mission-comp {
+      font-size: .7rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: .3rem;
+    }
+    .mission-desc {
+      font-size: .85rem;
+      color: var(--text-sub);
+      margin-top: .5rem;
+      line-height: 1.5;
+    }
+    .mission-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .3rem;
+      margin-top: .6rem;
+    }
+    .mission-tag {
+      font-size: .7rem;
+      font-family: var(--font-mono);
+      background: var(--accent-light);
+      border: 1px solid rgba(61,92,65,.25);
+      color: var(--accent);
+      padding: .15em .55em;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .18s, color .18s;
+    }
+    .mission-tag:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    .mission-tag--pending {
+      background: var(--bg3);
+      border-style: dashed;
+      color: var(--text-muted);
+      cursor: default;
+    }
+    .mission-tag--pending:hover {
+      background: var(--bg3);
+      color: var(--text-muted);
+    }
+    .mission-comp-names {
+      margin-top: .55rem;
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+    .mission-comp-name {
+      font-size: .76rem;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+    .mission-comp-name b {
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: .4rem;
+    }
+    .before-after {
+      display: flex;
+      gap: 1rem;
+      margin-top: .8rem;
+      flex-wrap: wrap;
+    }
+    .before-after > div { flex: 1; min-width: 200px; }
+    .before-after .label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: .4rem;
+    }
+
+    .stage-year-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 640px) {
+      .stage-year-grid { grid-template-columns: 1fr; }
+    }
+    .stage-year-card {
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem;
+      border: 2px solid transparent;
+    }
+    .stage-year-card--active {
+      background: var(--accent-light);
+      border-color: var(--accent);
+    }
+    .stage-year-card--disabled {
+      background: var(--bg2);
+      border: 2px dashed var(--border);
+      opacity: .6;
+      cursor: not-allowed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stage-year-label {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .stage-year-card--active .stage-year-label { color: var(--accent); }
+    .stage-year-card--disabled .stage-year-label { color: var(--text-muted); }
+    .stage-year-title {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-top: .4rem;
+      color: var(--text);
+    }
+    .stage-year-card--disabled .stage-year-title { color: var(--text-sub); }
+    .stage-year-sub {
+      font-size: .8rem;
+      color: var(--text-sub);
+      margin-top: .3rem;
+    }
+    .stage-year-badge {
+      font-size: .62rem;
+      font-family: var(--font-mono);
+      padding: .15em .55em;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .stage-year-card--active .stage-year-badge {
+      background: var(--accent);
+      color: #fff;
+    }
+    .stage-year-card--disabled .stage-year-badge {
+      background: var(--bg3);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-dot"></span>
+    Nathan Poret<span class="nav-brand-full"> · Portfolio</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link">CV</a>
+    <a href="veille.html"   class="nav-link">Veille</a>
+    <a href="stage.html"    class="nav-link active">Stage</a>
+    <a href="rectorat.html" class="nav-link">Rectorat</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="eyebrow">Stage en entreprise</div>
+  <h1>Stage chez Intertek</h1>
+  <p>Service Informatique (IT/DSI) · Modernisation de l'application interne IRIS<br>
+  Du 26/05/2026 au 26/06/2026</p>
+  <div class="stage-meta">
+    <span>Intertek</span>
+    <span>2 Allée de la Fosse Morée, Heudebouville</span>
+    <span>Service IT/DSI</span>
+    <span>Stage de 1ère année</span>
+  </div>
+</div>
+
+<div class="page-body">
+
+  <!-- ══ 0. SÉLECTEUR D'ANNÉE ══ -->
+  <div class="stage-year-grid">
+    <div class="stage-year-card stage-year-card--active">
+      <div class="stage-year-label">
+        <span class="stage-year-badge">Actif</span>
+        Stage de 1ère année
+      </div>
+      <div class="stage-year-title">Intertek — Modernisation d'IRIS</div>
+      <div class="stage-year-sub">26/05/2026 → 26/06/2026 · détail ci-dessous</div>
+    </div>
+    <div class="stage-year-card stage-year-card--disabled" aria-disabled="true">
+      <div class="stage-year-label">
+        <span class="stage-year-badge">À venir</span>
+        Stage de 2ème année
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 0bis. PRÉSENTATION DE L'ENTREPRISE ══ -->
+  <section class="block">
+    <h2 class="block-title">Présentation de l'entreprise</h2>
+    <div class="theme-card">
+      <p>
+        Intertek est un groupe international qui teste, inspecte et certifie la qualité, la
+        sécurité et la conformité de produits et de systèmes pour de nombreux secteurs —
+        bâtiment et construction, énergie (pétrole, gaz, renouvelables), chimie, agroalimentaire
+        et biens de consommation notamment — afin de garantir leur conformité aux normes et
+        réglementations en vigueur. J'ai effectué mon stage à l'agence d'Heudebouville, où le
+        service IT/DSI assure la maintenance et l'évolution des outils informatiques internes
+        utilisés par les équipes métier.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ 1. CONTEXTE ══ -->
+  <section class="block">
+    <h2 class="block-title">Contexte</h2>
+    <div class="theme-card">
+      <p>
+        J'ai intégré le service IT/DSI pour un stage de quatre semaines, encadré par ma tutrice,
+        développeuse au sein de l'équipe.
+      </p>
+      <p style="margin-top:.8rem;">
+        Ma mission consistait à moderniser <strong>IRIS</strong>, un site web interne permettant
+        aux entreprises clientes de gérer et suivre le parcours de leurs demandes (résultats des
+        tests qualité, etc.). J'ai modernisé cette interface en intervenant sur le code, tout en
+        conservant la disposition et les fonctionnalités existantes afin de ne pas perturber les
+        utilisateurs habitués à l'outil, et en respectant une charte graphique définie (jaune
+        #FFD100, fond navy #1B2A4A).
+      </p>
+      <p style="margin-top:.8rem;">
+        S'y sont ajoutées deux petites missions imprévues au départ : la refonte complète de la
+        bibliothèque d'icônes, et plusieurs interventions sur la base de données SQL Server pour
+        corriger des anomalies signalées par des utilisateurs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ 3. ENVIRONNEMENT TECHNOLOGIQUE ══ -->
+  <section class="block">
+    <h2 class="block-title">Environnement technologique</h2>
+    <div class="theme-card">
+      <p>Stack et outils utilisés au quotidien pendant le stage :</p>
+      <div class="stack-grid">
+        <span class="stack-tag">C#</span>
+        <span class="stack-tag">SQL Server</span>
+        <span class="stack-tag">Visual Studio</span>
+        <span class="stack-tag">CSS</span>
+      </div>
+      <p style="margin-top:.9rem;">
+        Des outils comme Flaticon, Visual Studio, SQL Server ou Google Meet ont rythmé mon
+        quotidien pendant le stage : Flaticon pour la recherche d'icônes sous licence libre,
+        Visual Studio pour le développement, SQL Server pour la gestion des données, et Google
+        Meet pour les échanges avec l'équipe à distance et pendant les réunions.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ 4. MISSIONS DÉTAILLÉES ══ -->
+  <section class="block">
+    <h2 class="block-title">Réalisations professionnelles</h2>
+    <div class="comp-blocks-grid">
+
+      <!-- BLOC B1.1 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.1</span>
+          <h3 class="comp-block-title">Gérer le patrimoine informatique</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-respect-des-conventions-de-code-existant">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Remplacement des icônes et respect des conventions de IRIS</div>
+                <div class="mission-comp">Gérer le patrimoine informatique</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Modernisation de l'application IRIS chez Intertek dans le respect des standards déjà en
+              place : remplacement de la bibliothèque d'icônes par des ressources sous licence claire,
+              respect de la charte graphique Intertek, et respect des conventions de code
+              existantes (camelCase, Query Builder interne, composants ASP.NET WebForms).
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.1.2&real=12&from=stage" class="mission-tag">B1.1.2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC B1.2 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.2</span>
+          <h3 class="comp-block-title">Répondre aux incidents et aux demandes d'assistance et d'évolution</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-correction-de-donnees-via-des-requetes-s">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Correction de données via des requêtes SQL</div>
+                <div class="mission-comp">Répondre aux incidents et aux demandes d'assistance et d'évolution</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Deux demandes remontées par des utilisateurs d'IRIS : un affichage de HTML brut dans
+              des champs de description, et l'impossibilité de supprimer un processus qui aurait dû
+              fonctionner. J'ai qualifié chaque demande en interrogeant la base via SSMS pour
+              comprendre l'origine du problème avant d'orienter vers la correction adaptée, validée
+              par ma tutrice avant toute exécution.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.2.1&real=13&from=stage" class="mission-tag">B1.2.1</a>
+              <a href="competence.html?code=B1.2.3&real=13&from=stage" class="mission-tag">B1.2.3</a>
+            </div>
+          </div>
+
+          <div class="mission-card" id="m-resolution-d-un-bug-d-affichage-sur-les">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Résolution d'un bug d'affichage sur les menus déroulants</div>
+                <div class="mission-comp">Répondre aux incidents et aux demandes d'assistance et d'évolution</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Sur la page TreeList des exigences techniques d'IRIS, les menus déroulants DevExpress
+              se décalaient de quelques pixels sur certaines pages seulement. Après plusieurs heures
+              d'investigation dans les DevTools Chrome, j'ai identifié qu'une propriété CSS
+              <code>transform</code> appliquée à un élément parent perturbait le positionnement fixe
+              des popups. Correction appliquée sans casser aucune autre page de l'application.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.2.3&real=11&from=stage" class="mission-tag">B1.2.3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC B1.3 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.3</span>
+          <h3 class="comp-block-title">Développer la présence en ligne de l'organisation</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-refonte-visuelle-des-pages-d-iris">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Refonte visuelle des pages d'IRIS</div>
+                <div class="mission-comp">Développer la présence en ligne de l'organisation</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Modernisation progressive de l'interface : mise à jour de composants front-end,
+              harmonisation visuelle de plusieurs pages, en conservant la compatibilité avec le
+              reste de l'application ASP.NET WebForms.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.3.3&real=10&from=stage" class="mission-tag">B1.3.3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC B1.4 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.4</span>
+          <h3 class="comp-block-title">Travailler en mode projet</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-reunions-d-equipe-hebdomadaires">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Réunions d'équipe hebdomadaires (Google Meet)</div>
+                <div class="mission-comp">Travailler en mode projet</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Chaque semaine, une réunion en visioconférence (Google Meet) réunissait toute
+              l'équipe informatique pour faire le point sur l'avancement : ce qui avait été
+              réalisé durant la semaine et ce qu'il restait à faire. Ces échanges m'ont permis de
+              suivre l'avancement de mes propres tâches par rapport à celles de l'équipe et
+              d'ajuster mes priorités en conséquence.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.4.3&real=16&from=stage" class="mission-tag">B1.4.3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC B1.5 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.5</span>
+          <h3 class="comp-block-title">Mettre à disposition des utilisateurs un service informatique</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-verification-et-tests-de-non-regression">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Vérification et tests de non-régression</div>
+                <div class="mission-comp">Mettre à disposition des utilisateurs un service informatique</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Avant chaque validation d'une page modernisée avec ma tutrice, j'ai systématiquement
+              testé l'ensemble des fonctionnalités existantes (tri des colonnes, pagination,
+              filtres, boutons d'action) pour m'assurer qu'aucune fonctionnalité n'avait été cassée
+              par une modification visuelle.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.5.1&real=14&from=stage" class="mission-tag">B1.5.1</a>
+              <a href="competence.html?code=B1.5.2&real=14&from=stage" class="mission-tag">B1.5.2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC B1.6 -->
+      <div class="comp-block">
+        <div class="comp-block-head">
+          <span class="comp-block-code">B1.6</span>
+          <h3 class="comp-block-title">Organiser son développement professionnel</h3>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card" id="m-apprentissage-de-nouveaux-outils-asp-net">
+            <div class="mission-head">
+              <div>
+                <div class="mission-title">Apprentissage de nouveaux outils (ASP.NET, DevExpress, SSMS)</div>
+                <div class="mission-comp">Organiser son développement professionnel</div>
+              </div>
+            </div>
+            <p class="mission-desc">
+              Formation rapide et autonome à des technologies inconnues avant le stage : ASP.NET
+              WebForms, composants DevExpress et SSMS pour interroger une base de données de
+              production, via documentation officielle, observation du code existant et échanges
+              ciblés avec l'équipe.
+            </p>
+            <div class="mission-tags">
+              <a href="competence.html?code=B1.6.1&real=15&from=stage" class="mission-tag">B1.6.1</a>
+              <a href="competence.html?code=B1.6.2&real=15&from=stage" class="mission-tag">B1.6.2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 5. PIÈCES JOINTES ══ -->
+  <section class="block">
+    <h2 class="block-title">Pièces jointes</h2>
+    <div class="recto-card">
+      <div class="recto-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+      </div>
+      <div class="recto-info">
+        <h2>Attestation de stage</h2>
+        <p>
+          Attestation délivrée par Intertek pour le stage de première année réalisé du 26/05/2026
+          au 26/06/2026 au sein du service IT/DSI.
+        </p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="NPO_attestationDeStage.jpg" download>
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Télécharger l'attestation de stage
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="recto-card" style="margin-top:.9rem;">
+      <div class="recto-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H7v-2h5v2zm5-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      </div>
+      <div class="recto-info">
+        <h2>Tableau de synthèse des compétences</h2>
+        <p>
+          Retrouve le détail de toutes les réalisations professionnelles (formation et stage) et
+          des compétences validées dans le cadre de l'épreuve E5, également disponible dans
+          l'onglet <a href="rectorat.html" style="color:var(--accent);font-weight:600;">Rectorat</a>.
+        </p>
+        <div class="btn-group">
+          <a class="btn btn-primary" href="NPO_bilanCompetences.xls" download>
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Télécharger le tableau (.xls)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Portfolio de <a href="index.html">Nathan Poret</a> · BTS SIO SLAM · Session 2026 · Lycée La Châtaigneraie
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

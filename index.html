@@ -22,6 +22,8 @@
       white-space: nowrap;
     }
     .rgpd-dropdown.open { display: block; }
+    .rgpd-arrow { display: inline-block; transition: transform .25s ease; }
+    .rgpd-tag.open .rgpd-arrow { transform: rotate(180deg); }
     .rgpd-dropdown a {
       display: block;
       padding: .5rem 1rem;
@@ -47,6 +49,7 @@
   <div class="nav-links">
     <a href="index.html"    class="nav-link active">CV</a>
     <a href="veille.html"   class="nav-link">Veille</a>
+    <a href="stage.html"    class="nav-link">Stage</a>
     <a href="rectorat.html" class="nav-link">Rectorat</a>
   </div>
 </nav>
@@ -123,11 +126,11 @@
         <h2 class="block-title">Formations</h2>
 
         <div class="timeline">
-          <div class="tl-item">
+          <div class="tl-item tl-item--current">
             <div class="tl-dot"></div>
             <div class="tl-content">
               <div class="tl-period">2025 – 2027</div>
-              <div class="tl-title">BTS SIO SLAM</div>
+              <div class="tl-title">BTS SIO SLAM<span class="tl-badge-current">En cours</span></div>
               <div class="tl-place">Lycée La Châtaigneraie · Le Mesnil-Esnard</div>
               <p class="tl-desc">Services Informatiques aux Organisations — option Solutions Logicielles et Applications Métiers</p>
             </div>
@@ -176,7 +179,7 @@
 
         <div class="comp-grid">
 
-          <div class="comp-card">
+          <div class="comp-card comp-card--featured">
             <div class="comp-icon">
               <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
             </div>
@@ -194,7 +197,7 @@
             </div>
           </div>
 
-          <div class="comp-card">
+          <div class="comp-card comp-card--featured">
             <div class="comp-icon">
               <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
             </div>
@@ -202,7 +205,7 @@
               <div class="comp-title">Bases de données & SGBDR</div>
               <div class="comp-tags">
                 <span class="tag">MySQL</span>
-                <span class="tag">SQL Server (Transact-SQL)</span>
+                <span class="tag">SQL Server</span>
                 <span class="tag">Language SQL</span>
               </div>
             </div>
@@ -254,7 +257,7 @@
                 </a>
                 <span class="tag tag--accent tag--link rgpd-tag" id="rgpdToggle" role="button" tabindex="0">
                   <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
-                  Certification RGPD ▾
+                  Certification RGPD <span class="rgpd-arrow">▾</span>
                   <span class="rgpd-dropdown" id="rgpdDropdown">
                     <a href="NPO_certifRGPDM1.pdf" target="_blank" rel="noopener">Module 1 — Notions clés</a>
                     <a href="NPO_certifRGPDM2.pdf" target="_blank" rel="noopener">Module 2 — Protection des données</a>
@@ -263,6 +266,21 @@
                     <a href="NPO_certifRGPDM5.pdf" target="_blank" rel="noopener">Module 5 — Collectivités territoriales</a>
                   </span>
                 </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comp-card">
+            <div class="comp-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+            </div>
+            <div class="comp-body">
+              <div class="comp-title">Veille technologique</div>
+              <div class="comp-tags">
+                <a href="veille.html" class="tag tag--accent tag--link">
+                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+                  L'IA générative dans le développement
+                </a>
               </div>
             </div>
           </div>
@@ -286,8 +304,12 @@
     rgpdToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       rgpdDropdown.classList.toggle('open');
+      rgpdToggle.classList.toggle('open');
     });
-    document.addEventListener('click', () => rgpdDropdown.classList.remove('open'));
+    document.addEventListener('click', () => {
+      rgpdDropdown.classList.remove('open');
+      rgpdToggle.classList.remove('open');
+    });
     rgpdDropdown.querySelectorAll('a').forEach(a => a.addEventListener('click', e => e.stopPropagation()));
   }
 </script>
