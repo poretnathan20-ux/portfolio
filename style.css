@@ -886,7 +886,7 @@ footer a:hover { color: var(--accent); }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .comp-card {
@@ -895,6 +895,19 @@ footer a:hover { color: var(--accent); }
   align-items: flex-start;
   padding: 1.1rem 1.2rem;
   border-radius: 6px;
+  height: 100%;
+}
+
+.comp-icon {
+  align-self: flex-start;
+}
+
+.comp-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .comp-card--featured {
