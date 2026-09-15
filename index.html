@@ -37,6 +37,30 @@
       background: rgba(61,92,65,.12);
       color: var(--accent, #3d5c41);
     }
+    .hero-contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .hero-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .85rem;
+      color: var(--accent, #3d5c41);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .hero-contact-item svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    .cv-grid {
+      grid-template-columns: 1fr;
+    }
   </style>
 </head>
 <body>
@@ -56,10 +80,22 @@
 
 <!-- HERO -->
 <div class="page-hero">
-  <div class="eyebrow">Curriculum Vitæ</div>
   <h1>Nathan Poret</h1>
-  <p>Étudiant en BTS SIO option SLAM · Lycée La Châtaigneraie, Le Mesnil-Esnard<br>
-  Recherche de stage du <strong style="color:var(--accent)">11/01 → 19/02</strong></p>
+  <p>Étudiant en BTS SIO option SLAM · La Châtaigneraie, <span style="white-space:nowrap">Le Mesnil-Esnard</span></p>
+  <div class="hero-contact">
+    <a href="tel:+33777495116" class="hero-contact-item">
+      <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
+      +33 7 77 49 51 16
+    </a>
+    <a href="mailto:poretnathan20@gmail.com" class="hero-contact-item">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      poretnathan20@gmail.com
+    </a>
+    <span class="hero-contact-item">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>
+      Le Mesnil-Esnard (76)
+    </span>
+  </div>
 </div>
 
 <div class="page-body cv-body">
@@ -67,58 +103,7 @@
   <!-- ══ GRILLE PRINCIPALE ══ -->
   <div class="cv-grid">
 
-    <!-- ── COLONNE GAUCHE ── -->
-    <aside class="cv-aside">
-
-      <!-- Profil -->
-      <div class="cv-section aside-card">
-        <div class="aside-title">Profil</div>
-        <p class="aside-text">
-          Actuellement étudiant en BTS SIO option SLAM, je recherche un stage pour mettre en pratique mes compétences en développement, approfondir mes connaissances techniques et participer à des projets concrets. Motivé, curieux et rigoureux, je souhaite rejoindre une équipe dynamique afin de contribuer à des solutions performantes.
-        </p>
-      </div>
-
-      <!-- Contact -->
-      <div class="cv-section aside-card">
-        <div class="aside-title">Contact</div>
-        <ul class="contact-list">
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.25 1.01l-2.2 2.2z"/></svg>
-            <a href="tel:+33777495116">+33 7 77 49 51 16</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-            <a href="mailto:nathan.poret@campus-lachataigneraie.org">nathan.poret@campus-<br>lachataigneraie.org</a>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>
-            <span>38 Route de Paris<br>76240 Le Mesnil-Esnard</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Langues -->
-      <div class="cv-section aside-card">
-        <div class="aside-title">Langues</div>
-        <div class="lang-item">
-          <div class="lang-row">
-            <span>Anglais</span>
-            <span class="lang-level">B2+</span>
-          </div>
-          <div class="bar-wrap"><div class="bar-fill" style="width:78%"></div></div>
-        </div>
-        <div class="lang-item" style="margin-top:.9rem">
-          <div class="lang-row">
-            <span>Espagnol</span>
-            <span class="lang-level">B1</span>
-          </div>
-          <div class="bar-wrap"><div class="bar-fill" style="width:52%"></div></div>
-        </div>
-      </div>
-
-    </aside>
-
-    <!-- ── COLONNE DROITE ── -->
+    <!-- ── COLONNE UNIQUE ── -->
     <main class="cv-main">
 
       <!-- Formations -->
@@ -155,21 +140,48 @@
           <div class="tl-item">
             <div class="tl-dot tl-dot--accent2"></div>
             <div class="tl-content">
-              <div class="tl-period">2022</div>
-              <div class="tl-title">Stage de découverte</div>
-              <div class="tl-place">ETNA France LDT Bourg · La Chapelle Gauthier</div>
-              <p class="tl-desc">Mise en œuvre de plans de monte-charge sous logiciel 3D SolidWorks.</p>
-            </div>
-          </div>
-          <div class="tl-item">
-            <div class="tl-dot tl-dot--accent2"></div>
-            <div class="tl-content">
               <div class="tl-period">2026</div>
               <div class="tl-title">Stage en milieu professionnel</div>
               <div class="tl-place">Intertek · 2 Allée de la Fosse Morée, Heudebouville</div>
               <p class="tl-desc">Service Informatique — Modernisation du site web interne.</p>
             </div>
           </div>
+          <div class="tl-item">
+            <div class="tl-dot tl-dot--accent2"></div>
+            <div class="tl-content">
+              <div class="tl-period">2022</div>
+              <div class="tl-title">Stage de découverte</div>
+              <div class="tl-place">ETNA France LDT Bourg · La Chapelle Gauthier</div>
+              <p class="tl-desc">Mise en œuvre de plans de monte-charge sous logiciel 3D SolidWorks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Langues -->
+      <section class="cv-section">
+        <h2 class="block-title">Langues</h2>
+
+        <div class="lang-item">
+          <div class="lang-row">
+            <span>Français</span>
+            <span class="lang-level">Natif</span>
+          </div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item" style="margin-top:.9rem">
+          <div class="lang-row">
+            <span>Anglais</span>
+            <span class="lang-level">B2+</span>
+          </div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:78%"></div></div>
+        </div>
+        <div class="lang-item" style="margin-top:.9rem">
+          <div class="lang-row">
+            <span>Espagnol</span>
+            <span class="lang-level">B1</span>
+          </div>
+          <div class="bar-wrap"><div class="bar-fill" style="width:52%"></div></div>
         </div>
       </section>
 
@@ -186,13 +198,38 @@
             <div class="comp-body">
               <div class="comp-title">Développement</div>
               <div class="comp-tags">
-                <span class="tag">SQL</span>
                 <span class="tag">C#</span>
                 <span class="tag">Python</span>
+                <span class="tag">Vibe coding</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comp-card">
+            <div class="comp-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 3L2 12l1.41 1.41L4 12.83V20a1 1 0 001 1h5v-6h4v6h5a1 1 0 001-1v-7.17l.59.58L21 12z"/></svg>
+            </div>
+            <div class="comp-body">
+              <div class="comp-title">Web</div>
+              <div class="comp-tags">
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
                 <span class="tag">PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="comp-card">
+            <div class="comp-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2l9 4.5v9L12 20l-9-4.5v-9L12 2zm0 2.24L5 7.38v7.24l7 3.14 7-3.14V7.38l-7-3.14zM12 8a4 4 0 110 8 4 4 0 010-8z"/></svg>
+            </div>
+            <div class="comp-body">
+              <div class="comp-title">Frameworks</div>
+              <div class="comp-tags">
                 <span class="tag">Symfony</span>
+                <span class="tag">Bootstrap</span>
+                <span class="tag">.NET</span>
+                <span class="tag">ASP.NET</span>
               </div>
             </div>
           </div>
@@ -204,9 +241,10 @@
             <div class="comp-body">
               <div class="comp-title">Bases de données & SGBDR</div>
               <div class="comp-tags">
+                <span class="tag">SQL</span>
                 <span class="tag">MySQL</span>
                 <span class="tag">SQL Server</span>
-                <span class="tag">Language SQL</span>
+                <span class="tag">Langage SQL</span>
               </div>
             </div>
           </div>
@@ -245,7 +283,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
             </div>
             <div class="comp-body">
-              <div class="comp-title">Cybersécurité</div>
+              <div class="comp-title">Certifications</div>
               <div class="comp-tags">
                 <a href="MoocDeLansiiAttestation.pdf" target="_blank" rel="noopener" class="tag tag--accent tag--link">
                   <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
@@ -276,11 +314,15 @@
             </div>
             <div class="comp-body">
               <div class="comp-title">Veille technologique</div>
+              <a href="veille.html" style="display:flex; align-items:center; gap:.3rem; font-size:.75rem; font-weight:500; color:var(--accent,#3d5c41); text-decoration:none; opacity:.8; margin:-.15rem 0 .55rem;">
+                <svg viewBox="0 0 24 24" style="width:10px;height:10px;flex-shrink:0;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
+                L'IA générative dans le développement
+              </a>
               <div class="comp-tags">
-                <a href="veille.html" class="tag tag--accent tag--link">
-                  <svg viewBox="0 0 24 24" style="width:10px;height:10px;display:inline-block;vertical-align:middle;margin-right:3px;"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm5-2v6h-2V4.414l-7.293 7.293-1.414-1.414L17.586 3H14V1h6z"/></svg>
-                  L'IA générative dans le développement
-                </a>
+                <span class="tag">Google Alerts</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">YouTube</span>
+                <span class="tag">IA générative</span>
               </div>
             </div>
           </div>
